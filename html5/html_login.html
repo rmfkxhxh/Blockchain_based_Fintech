@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login process</title>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+    <script type="text/javascript">
+        console.log(window.location.href)
+
+        let a = window.location.href.split("?")
+        console.log(a)
+        let b = a[1].split('&')
+        console.log(b)
+        
+        let root = document.querySelector('#root')
+        root.innerHTML = `${b[0]} 값은 : ${b[1]}입니다.`
+    </script>
+</body>
+</html>
