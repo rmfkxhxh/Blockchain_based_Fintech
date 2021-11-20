@@ -8,16 +8,16 @@ const readline = require('readline').createInterface({
   
   readline.on('line', function(data) {
     
-    input = data.toString().split(' ')
+    input = data.toString().trim().split(' ')
   
   }).on("close", function() {
-    a = Number(input[0])
-    let arr = []
+    if (input.length > 1) {
+      a = Number(input[0])
+      b = Number(input[1])
 
-    for (var i = 0; i < 9; i++) {
-      
-      arr += `${a} * ${i+1} = ${a*(i+1)}\n`
-    }
-    console.log(arr)
+    
+    var c = a + b
+    console.log(c, '\n')
     process.exit();
+    }
   });

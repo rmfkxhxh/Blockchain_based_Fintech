@@ -16,7 +16,7 @@ fs.open('input1.txt', 'r+', (err, fd) => {
 
         //불필요한 버퍼는 스트링 변환 하지 않음
         if (bytes > 0) console.log(buf.slice(0, bytes).toString()) 
-        console.log(buf)
+        // console.log(buf)
         
         // if (bytes > 0) console.log(buf.toString())
     })
