@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="result"></p>
+    <script>
+        var hello;
+
+        // hello = () => { //arrow 함수
+        //     return "Hello World"
+        // }
+
+        // hello = () => "Hello World"; //callback 함수 사용
+
+        // hello = (arg) => "Hello " + arg; //argument 사용
+
+        // hello = arg => "Hello " + arg;
+
+        hello = (arg) => { return "Hello " + arg; } //명시적으로 사용하는것을 추천
+        
+        // document.getElementById("result").innerHTML = hello();
+        document.getElementById("result").innerHTML = hello("world");
+    </script>
+</body>
+</html>

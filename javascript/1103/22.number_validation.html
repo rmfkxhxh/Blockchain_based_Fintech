@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <input type="text" id="num">
+    <button type = "button" onclick="myFunction()">submit</button>
+    <p id = "result"></p>
+
+    <script>
+        function myFunction() {
+            let x = document.getElementById("num").value;
+            let txt;
+
+            if(isNaN(x) || x < 1 || x > 10) {
+                txt = "input not valid";
+            }
+            else {
+                txt = "Input OK"
+            }
+            document.getElementById("result").innerHTML = txt;
+        }
+
+        
+
+    </script>
+</body>
+</html>

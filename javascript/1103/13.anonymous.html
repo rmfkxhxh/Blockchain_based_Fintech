@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id = "result1"></p>
+    <p id = "result2"></p>
+
+
+    <script>
+        const person = {
+            fullName: function() {
+                return this.firstName + " " + this.lastName;
+            }
+        }
+
+        const person1 = {
+            firstName : "Michael",
+            lastName : "Jackson"
+        }
+
+        const person2 = {
+            firstName : "Janet",
+            lastName : "Jackson"
+        }
+
+        document.getElementById('result1').innerHTML = person.fullName.call(person1);
+        document.getElementById('result2').innerHTML = person.fullName.call(person2);
+        
+    </script>
+</body>
+</html>

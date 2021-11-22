@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Slice</title>
+</head>
+<body>
+    <h1>Array Slice</h1>
+    <button onclick='myFunction()'>clcik ;;)</button>
+    <p id = "result1"></p>
+    <p id = "result2"></p>
+    <p id = "result3"></p>
+    <p id = "result4"></p>
+
+    <script>
+        const fruits = ['Bannana', 'Orange', 'Apple', 'Grapes', 'Kiwi', 'Lemon'];
+
+        function myFunction() {
+            document.getElementById('result1').innerHTML = fruits.slice(1);
+            document.getElementById('result2').innerHTML = fruits.slice(1,2);
+            document.getElementById('result3').innerHTML = fruits.slice(3,5);
+            document.getElementById('result4').innerHTML = fruits.slice(0);
+        }
+    </script>
+</body>
+</html>

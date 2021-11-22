@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event mouse over</title>
+</head>
+<body>
+    <h1 id="demo" onmouseover="mouseOver()" onmouseout="mouseOut()">Mouse over me!!!</h1>
+    <script>
+
+        //<방법1>
+        // document.getElementById("demo").onmouseover = function() {mouseOver()};
+        // document.getElementById("demo").onmouseout = function() {mouseOut()};
+        
+        // function mouseOver() {
+        //     document.getElementById("demo").style.color = "red";
+        // }
+        // function mouseOut() {
+        //     document.getElementById("demo").style.color = "black";
+        // }
+
+
+        // document.getElementById("demo").onmouseover = function() {document.getElementById("demo").style.color = "red";}
+        // document.getElementById("demo").onmouseout = function() {document.getElementById("demo").style.color = "black";}
+
+    </script>
+</body>
+</html>

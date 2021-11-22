@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For of Loop</title>
+</head>
+<body>
+    <h1>For of Loop</h1>
+    <div id = "result"></div>
+    <script>
+        // let arr = new Set([1, 1, 2, 2, 3, 3]);
+        let arr = [1, 1, 2, 2, 3, 3];
+        var txt = "";
+        for (var value of arr) {
+            txt += value + " ";
+        }
+
+        // const person = {
+        //     fname:"John",
+        //     lname:"Doe",
+        //     age:25
+        // };
+        // let text = ""
+        // for (let x in person) {
+            // txt += person[x] + " ";
+        //     text += x + ": " + person[x] + " ";
+        // }
+        
+        // document.getElementById("result").innerHTML = text;
+
+        document.getElementById("result").innerHTML = txt;
+        
+    </script>
+</body>
+</html>

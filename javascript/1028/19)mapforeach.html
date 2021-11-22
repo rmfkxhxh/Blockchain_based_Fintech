@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map for each</title>
+</head>
+<body>
+    <h2>Map for each</h2>
+    <p id = "result1"></p>
+    <p id = "result2"></p>
+
+    <script>
+        const map = new Map();
+        map.set("20190101", "홍길동");
+        map.set("20190102", "김사랑");
+        map.set("20190103", "강동수");
+
+        console.log(map.get("20190101"));
+        map.delete("20190103");
+        console.log(map.has("20190103"));
+
+        map.forEach((value, key) => console.log(key + " , " + value));
+
+        for(let item of map)
+        {
+            console.log(item[0]+" , " + item[1]);
+        }
+
+        for(let [key, value] of map)
+        {
+            console.log(key + " , " + value);
+        }
+
+        const keys = map.keys();
+        for(let key of keys)
+        {
+            console.log(map.get(key));
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="checkPrompt()">Click Me</button> <!--의미있는 함수명으로-->
+    <p id = 'result'></p>
+
+    <script>
+        function checkPrompt() {
+            let text; 
+            let favDrink =  prompt("what is your favorite cocktail drink?", "Daiquiri");
+
+            switch(favDrink) {
+                case "Martini":
+                    text = "Excellent choice. Martini is good for your soul.";
+                    break;
+                case "Daiquiri":
+                    text = "Daiquiri is my favorite too!";
+                    break; 
+                case "Cosmopolitan":
+                    text = "Really? Are you sure the Cosmopolitan is your favorite?";
+                    break;
+                default:
+                    text = "I have never heard of that one.."
+
+                document.getElementById("result").innerHTML = text
+            }
+        }
+     
+     
+    </script>
+</body>
+</html>

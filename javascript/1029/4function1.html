@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+<body>
+    <h1>Function</h1>
+    <div id = 'result'></div>
+    <div id = 'result1'></div>
+    <script>
+        var x = myfunction(4, 8);
+        document.getElementById("result1").innerHTML = x;
+        function myfunction (p1, p2) {
+            return p1 * p2
+        }
+        document.getElementById("result").innerHTML = myfunction(3, 5);
+        </script>
+</body>
+</html>

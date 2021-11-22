@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call back2</title>
+</head>
+<body>
+    <h1>Call back2</h1>
+    <div id = 'userid'></div>
+    <div id = 'username'></div>
+    <script>
+        function findUserCallback(userid, myCallback) {
+            const user = { 
+                userid: userid,
+                name: "User" + userid
+            };
+
+            myCallback(user);
+
+        }
+
+       findUserCallback(1, function(user) {
+           document.getElementById('userid').innerHTML = user.userid;
+           document.getElementById('username').innerHTML = user.name;
+       })
+    </script>
+</body>
+</html>

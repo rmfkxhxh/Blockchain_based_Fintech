@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float example-1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box {
+            float: left;
+            width: 33.33%;
+            padding: 50px;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Grid of Boxes</h2>
+    <p>Float Boxes side by side:</p>
+    <div class="clearfix">
+        <div class="box" style="background-color: #bbb;">
+            <p>some text inside the box.</p>
+        </div>
+        <div class="box"  style="background-color: #ccc;">
+            <p>some text inside the box.</p>
+        </div>
+        <div class="box"  style="background-color: #bbb;">
+            <p>some text inside the box.</p>
+        </div>
+    </div>
+</body>
+</html>

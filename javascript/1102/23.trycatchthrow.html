@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id = "numcheck" type="text">
+    <button type="button" onclick = "checkNumber()">Click Me</button>
+    <p id = 'result'></p>
+
+    <script>
+        function checkNumber() {
+            let meassage, x;
+            message = document.getElementById("result") 
+            message.innerHTML = "";
+            x = document.getElementById('numcheck').value;
+
+            try {
+                if (x == "") throw "is Empty";
+                if (isNaN(x)) throw "not a number";
+                if (x > 10) throw "too high";
+                if (x < 1) throw "too low";
+            }
+            catch(err) {
+                message.innerHTML = "Input " + err;
+            }
+        }
+    </script>
+</body>
+</html>

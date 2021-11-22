@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set</title>
+</head>
+<body>
+    <h1>Set</h1>
+    <div id = 'result'></div>
+    <script>
+        const letters = new Set(['a', 'b', 'c', 'c', 'c', 'c', 'd']);
+        // const letters = new Set();
+        const a = "a";
+        const b = "b";
+        const c = "c";
+        const d = "d";
+
+        letters.add(a);
+        letters.add(b);
+        letters.add(c);
+        letters.add(d);
+        letters.add("e");
+        letters.add("f");
+        letters.add("g");
+        document.getElementById("result").innerHTML = letters.size;
+    </script>
+</body>
+</html>

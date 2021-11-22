@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <button onclick="setCaption()">Click</button>
+    <table>
+        <table>
+            <caption id="myCap">Table Caption Customize</caption>
+            <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+            </tr>
+            <tr>
+                <td>Apple</td>
+                <td>abc@gmail.com</td>
+                <td>Argentina</td>
+            </tr>
+            <tr>
+                <td>Goolde</td>
+                <td>abc@gmail.com</td>
+                <td>Sweden</td>
+            </tr>
+            <tr>
+                <td>Benz</td>
+                <td>abc@gmail.com</td>
+                <td>Korea</td>
+            </tr>
+    </table>
+    <script>
+        function setCaption() {
+            document.getElementById("myCap").style.captionSide = "bottom"
+        }
+    </script>
+
+    
+</body>
+</html>

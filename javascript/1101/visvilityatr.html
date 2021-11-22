@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visivility</title>
+</head>
+<body>
+    <div id = "result1">This is result1 div tag</div>
+    <div id = "result2">This is result2 div tag</div>
+    <input type = "butoon" onclick="demoDisplay()" value = "Hide text with display property">
+    <input type = "butoon" onclick="demoVisibility()" value = "Hide text with Visivility property">
+
+    
+    <script>
+        function demoDisplay() {
+            document.getElementById('result1').style.display = "none";
+        }
+        function demoVisibility() {
+            document.getElementById('result2').style.visibility = "hidden";
+        }
+    </script>
+   
+    
+</body>
+</html>

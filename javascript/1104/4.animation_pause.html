@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: dodgerblue;
+            position: relative;
+            animation: mymove 2s infinite;
+            animation-play-state: paused;
+            }
+            @keyframes mymove {
+                from {left: 0px;}
+                to {left: 200px;}
+            }
+    </style>
+</head>
+<body>
+    <button onclick="playFunction()">Play</button>
+    <button onclick="pauseFunction()">Pause</button>
+    <div id="myDiv"></div>
+
+    <script> // <script>는 body 제일 밑에 넣는것을 권장
+        function playFunction() {
+            document.getElementById("myDiv").style.animationPlayState = "running";
+           
+        }
+        function pauseFunction() {
+            document.getElementById("myDiv").style.animationPlayState = "paused";
+           
+        }
+    </script>
+    
+</body>
+</html>

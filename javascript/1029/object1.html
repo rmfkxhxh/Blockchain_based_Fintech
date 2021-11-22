@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id ="result1"></div>
+    <div id ="result2"></div>
+    <script>
+        const person = {
+        firstname : "David",
+        lastname:"Doe",
+        age:20,
+        eyeColor:"grey",
+        fullName: function() {
+            return this.firstname + " " + this.lastname;
+        }
+    };
+
+    document.getElementById('result1').innerHTML = person.firstname + " is " + person.age + " years old."
+    document.getElementById('result2').innerHTML = person.fullName() + " is " + person.age + " years old."
+    </script>
+    
+</body>
+</html>

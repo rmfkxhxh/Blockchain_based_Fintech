@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Time Out</title>
+</head>
+<body>
+    <div id = 'result'></div>
+    <script>
+        // setTimeout(function(){ myFunction("ByeWorld")}, 3000);
+
+    // function myFunction(value){
+    // document.getElementById('result').innerHTML = value;
+    // }
+    let txt = "";
+    function first() {
+        setTimeout(function() {
+            txt += "first" + "<br>";
+            document.getElementById("result").innerHTML = txt;            
+        }, 500);
+    }
+    function second() {
+        txt += "second" + "<br>";
+        document.getElementById("result").innerHTML = txt;
+    } 
+    first();
+    second();
+    
+    </script>
+</body>
+</html>

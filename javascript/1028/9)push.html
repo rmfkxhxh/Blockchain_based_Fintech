@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push</title>
+</head>
+<body>
+    <h1>Push</h1>
+    <button onclick="myFunction()">click to add Mango</button>
+    <div id = "results1"></div>
+    <div id = "results2"></div>
+    <script>
+        const fruits = ['Bannana', 'Orange', 'Apple', 'Grapes'];
+        document.getElementById("results1").innerHTML = fruits;
+
+        function myFunction() {
+            fruits.push('Mango')
+            document.getElementById("results1").innerHTML = fruits
+            
+        }
+    </script>
+</body>
+</html>

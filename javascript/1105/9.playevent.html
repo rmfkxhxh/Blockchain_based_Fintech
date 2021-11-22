@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+<body> 
+    <p>Press Play</p>
+
+    <video controls onplay="myFunction()">
+        <source src="../../res/mov_bbb.mp4" type="video/mp4">
+        <!-- <source src="https://www.youtube.com/embed/sQI64N9-mMI" type="video/mp4"> -->
+        <source src="../../res/mov_bbb.ogg" type="video/ogg">
+        Your browser does not support HTML5 video.
+    </video>
+    
+    <p>Video courtesy of <a href="https://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a></p>
+    <p id="result"></p>
+    <script>
+        function myFunction() {
+            document.getElementById("result").innerHTML = ("The video has started to play")
+        }
+    </script>
+</body>
+</html>

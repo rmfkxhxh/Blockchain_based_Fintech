@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="teaList"> 
+        <!-- 간격 띄우면 인덱싱 바뀜 -->
+        <li>Coffee</li>
+        <li>MilkTea</li>
+        <li>Jasmin</li>
+    </ul>
+    <button onclick="myFunction()">Click</button>
+    <p>First create a new Text node called Water.<br>Then replace the first child node of the first list item, with the newly created text node.</p>
+    <p><strong>Note:</strong> This example repaces only the text node "Coffee" with a text node "water", not entrie LI element, which would also be an alternative when replacing nodes.</p>
+
+    <script>
+        function myFunction() {
+            var textNode = document.createTextNode("Water");
+            var item = document.getElementById("teaList").childNodes[1];
+            item.replaceChild(textNode, item.childNodes[0]);
+
+
+        }
+        // x = []
+        // document.getElementById("teaList").innerHTML = x;
+        // document.write(x)
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id = "result"></p>
+
+
+    <script>
+        // callback 함수는 다른 함수가 완료된 이후에 실행 할수 있다.
+        function myDisplay(some) {
+            document.getElementById("result").innerHTML = some;
+
+        }
+        function calc(num1, num2, myCallback) {
+            let sum = num1 + num2;
+            myCallback(sum);
+        }
+
+        calc(5, 10, myDisplay)
+    </script>
+</body>
+</html>

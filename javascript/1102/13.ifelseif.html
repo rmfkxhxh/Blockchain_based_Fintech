@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <button onclick="myFunction()">Click Me!!</button>
+    <p id = "result"></p>
+    <script>
+        function myFunction() {
+            var time = new Date().getHours()
+            var greeting;
+            if (time < 10) {
+                greeting = "Good morning";
+            } 
+            else if (time < 20){
+                greeting = "Good day";
+            }
+            else {
+                greeting = "Good evening";
+            }
+            document.getElementById('result').innerHTML = greeting
+        }
+    </script>
+    
+</body>
+</html>

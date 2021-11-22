@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id = "result"></p>
+
+
+    <script>
+        //getter setter는 method가 아닌 property
+
+        class Car {
+            constructor(name) {
+                this.name = name;
+            }
+            //스태틱 - 정적 클라스 method는 class에 정의되고 객체에 대해서 static method로 호출할수없고 class내 에서만 호출된다
+            static hello(x) { // global하게 사용가능
+                // return 'hello' + this.name; //class name이 나옴
+                return 'hello ' + x.name; //class name이 나옴
+            }
+        }
+        let myCar = new Car("BMW X5");
+        document.getElementById("result").innerHTML = Car.hello(myCar);
+
+    </script>
+</body>
+</html>

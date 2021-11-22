@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myDiv {
+            width: 220px;
+            height: 300px;
+            border: 2px solid black;
+            display: flex;
+            }
+    </style>
+</head>
+
+<body>
+    <button onclick="setMyFlex()">Click</button>
+    <div id="myDiv">
+        <div style="background-color: coral;">Coral</div>
+        <div style="background-color: lightblue;">Light blue</div>
+        <div style="background-color: lightgreen;">Light green DIV with more contents</div>
+
+
+    </div>
+            
+    <script>
+        function setMyFlex() {
+            var x = document.getElementById("myDiv");
+            var y = x.getElementsByTagName("DIV");
+            var i = 0
+
+            for (let i=0; i < y.length; i++) {
+                y[i].style.msFlex = "1"; // IE10
+                y[i].style.flex = "1"; // 범용
+
+            }
+        }
+    </script>
+   
+</body>
+</html>

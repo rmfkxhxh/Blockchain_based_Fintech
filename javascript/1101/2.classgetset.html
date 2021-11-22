@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class getter setter</title>
+</head>
+<body>
+    <h1>Class getter setter</h1>
+    <div id = "result1"></div>
+    <div id = "result2"></div>
+    <script>
+        class Car {
+            constructor(brand) {
+                this.carname = brand;
+                }
+
+                get cname() {
+                    return this.carname;
+                }
+    
+                set cname(x) {
+                    this.carname = x;
+                }
+        } // end of car
+
+
+        let myCar = new Car("Ford");
+        document.getElementById("result1").innerHTML = myCar.cname;
+        myCar.cname = "Benz";
+        document.getElementById("result2").innerHTML = myCar.cname;
+
+    </script>
+    
+</body>
+</html>

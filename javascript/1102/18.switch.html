@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id ="myInput" type="text"> 
+    <button onclick="myFunction()">submit</button>
+    <p id = 'result'></p>
+
+    <script>
+        function myFunction() {
+            var text = '';
+            var fruits = document.getElementById('myInput').value;
+
+            switch(fruits) {
+                case "Bannana":
+                    text = "Banana is good!!";
+                    break;
+                case "Orange":
+                    text = "I am not a fan of orange.";
+                    break;
+                case "Apple":
+                    text = "How you like them apples?";
+                    break
+                default:
+                    text = "I have never heard of that fruit..."                
+            }
+
+            document.getElementById('result').innerHTML = text
+        }
+    </script>
+</body>
+</html>

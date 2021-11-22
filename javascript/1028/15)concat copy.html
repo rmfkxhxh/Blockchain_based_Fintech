@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Concat</title>
+</head>
+<body>
+    <h1>Array Concat</h1>
+    <button onclick='myFunction()'>clcik ;;)</button>
+    <div id = "concat1"></div>
+    <div id = "concat2"></div>
+    <p id = "concat2"></p>
+    <p id = "result"></p>
+    <p id = "result2"></p>
+
+    <script>
+        const fruits1 = ['Bannana', 'Orange'];
+        const fruits2 = ['Apple', 'Grapes']
+        const fruits3 = ['Kiwi', 'Lemon']
+        document.getElementById("concat1").innerHTML = fruits1;
+        document.getElementById("concat2").innerHTML = fruits2;
+        document.getElementById("concat3").innerHTML = fruits3;
+
+        function myFunction() {
+            document.getElementById('result').innerHTML = fruits1.concat(fruits2, fruits3);
+            document.getElementById('result2').innerHTML = fruits3.concat('Melon');
+        }
+    </script>
+</body>
+</html>

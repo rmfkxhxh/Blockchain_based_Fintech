@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: blue;
+            color: white;
+            -webkit-animation: mymove 5s infinite linear alternate; /* Chrome, Safari, Opera 브라우저용 */
+            animation: mymove 5s infinite linear alternate;
+        }
+        /* #f3f3f3 */
+        /* Chrome, Safari, Opera 브라우저용 */
+        @-webkit-keyframes mymove{
+            to {-webkit-transform: rotateY(180deg);}
+        }
+        @keyframes mymove {
+            to {transform: rotateY(180deg);}
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiv">
+        <h1>HELLO WORLD!!</h1>
+    </div>
+    <input type="checkbox"  onclick="rotateFunction(this)" checked>backface-visibility
+    <script>
+        function rotateFunction(x) {
+            if (x.checked === 1) {
+                //Chrome, Safari, Opera 브라우저용
+                document.getElementById("myDiv").style.webkitBackfaceVisibility = "visible";
+                // document.getElementById("myDiv").style.backfaceVisibility = "visible";
+            } //end of if
+            else {
+                document.getElementById("myDiv").style.webkitBackfaceVisibility = "hidden";
+                // document.getElementById("myDiv").style.backfaceVisibility = "hidden";
+
+            }
+        }
+    </script>
+</body>
+</html>

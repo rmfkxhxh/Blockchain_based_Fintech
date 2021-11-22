@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Shift Method</title>
+</head>
+<body>
+    <h1>Array Shift Method</h1>
+    <div id = "results1"></div>
+    <div id = "results2"></div>
+    <div id = "results3"></div>
+
+    <script>
+        const fruits = ['Bannana', 'Orange', 'Apple', 'Grapes'];
+        document.getElementById("results1").innerHTML = "Original Array:<br>" + fruits;
+        document.getElementById("results2").innerHTML = "Shift Array:<br>" + fruits.shift();
+        document.getElementById("results3").innerHTML = "New Array:<br>" + fruits;
+    </script>
+</body>
+</html>

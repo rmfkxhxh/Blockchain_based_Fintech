@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="myFunction()">Click</button>
+    <div id = "result"></div>
+    <script>
+        function myFunction() {
+            var txt = "";
+            var i;
+            var sum = 0
+            for (i=1; i<5; i++) {
+                if (i===3)
+                break;
+                // sum += i               
+            }
+            // txt += "The sum of 1 to 100 is " + sum + "<br>"            
+            txt += "The number is " + i + "<br>"            
+            document.getElementById('result').innerHTML = txt;
+        }
+        
+    </script>
+    
+</body>
+</html>

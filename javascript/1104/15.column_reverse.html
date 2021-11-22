@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main {
+            width: 350px;
+            height: 350px;
+            border: 2px solid gray;
+            display: flex;
+            flex-direction: row;
+            }
+
+        #main div {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div style="background-color: coral;">A</div>
+        <div style="background-color: rgb(126, 98, 87);">B</div>
+        <div style="background-color: rgb(133, 70, 48);">C</div>
+        <div style="background-color: rgb(49, 121, 58);">D</div>
+        <div style="background-color: rgb(53, 62, 114);">E</div>
+        <div style="background-color: rgb(197, 71, 155);">F</div>
+    </div>
+    <button onclick="reverseColumn()">Click</button>
+
+    <script>
+        function reverseColumn() {
+            document.getElementById("main").style.flexDirection = "column-reverse";
+        }
+    </script>
+   
+</body>
+</html>

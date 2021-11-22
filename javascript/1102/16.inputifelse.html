@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id ="myInput" type="text">
+    <button onclick="myFunction()">Try it</button>
+    <p id = 'result'></p>
+
+    <script>
+        function myFunction() {
+            var letter = document.getElementById('myInput').value;
+            var txt;
+
+            if(letter === 'c') {
+                txt = "Spot on! Good job!" 
+            }
+            else if (letter === "b" || letter === "d") {
+                txt = "Close, but not close enough";
+            }
+            else {
+                txt = "Waaay off..."
+            }
+            document.getElementById('result').innerHTML = txt
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id = "result1"></p>
+    <p id = "result2"></p>
+    <p id = "result3"></p>
+
+    <script>
+        class Car {
+            constructor(brand) {
+                this.carname = brand; 
+            }
+            present() {
+                return 'I have a ' + this.carname;
+            }
+        }   
+
+        class Model extends Car { // Car로 부터 속성을 상속 받는다
+            constructor(brand, mod) {
+                super(brand);
+                this.model = mod;
+            }
+                show() {
+             return this.present() + ', it is a ' + this.model;
+            }
+        }
+
+        class ModelYear extends Model { // Model로 부터 속성을 상속 받는다
+            constructor(brand, mod, year) {
+                super(brand, mod);
+                this.year = year;
+                }
+
+                yearShow() {
+                    return this.show() + ", year " + this.year;
+                }
+        }
+        
+
+        // let myCar = new Model ("Audi", "A8");
+        let myCar = new ModelYear ("Audi", "A8", 2015);
+        document.getElementById("result1").innerHTML = myCar.present()
+        document.getElementById("result2").innerHTML = myCar.show()
+        document.getElementById("result3").innerHTML = myCar.yearShow()
+        
+    </script>
+</body>
+</html>
