@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "event-stream": "^4.0.1"
+    "archiver": "^5.3.0",
+    "event-stream": "^4.0.1",
+    "express": "^4.17.1",
+    "fstream": "^1.0.12"
   }
 }
