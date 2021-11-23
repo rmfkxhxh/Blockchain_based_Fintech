@@ -26,6 +26,6 @@ extract.on('finish', function() {
     }
 });
 
-fs.createReadStream('./target/target.tar.gz')
+fs.createReadStream('./target/tageto.tar.gz')
     .pipe(zlib.createGunzip())
     .pipe(extract);

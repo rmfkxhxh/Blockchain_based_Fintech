@@ -6,13 +6,6 @@ const archive = archiver('tar', {
     zlib: { level: 9 } // Sets the compression level.
 });
 
-
-
-
-
-
-
-
 function readDirnMakeTarget() {
     return new Promise((resolve) => {
         var fileArr = []
@@ -32,8 +25,9 @@ function readDirnMakeTarget() {
             else {
                 console.log("target directory already exists")
             };
+            resolve('readDirnMakeTarget: reading target dir finish');
         });
-        resolve(fileArr);
+
     });
 }
 
@@ -60,9 +54,9 @@ function pipe() {
 
                 })
             }
-
+            resolve('pipe: copying file finsished');
         })
-        resolve(fileList);
+
     });
 }
 
@@ -73,63 +67,44 @@ function finished(x) {
     });
 }
 
-// function compressTargetFiles() {
-//     return new Promise((resolve) => {
-
-//         fs.readdir("./target", (err, files) => {
-//             if (err) throw err;
-
-//             files.forEach((x) => {
-
-//             })
-//         })
-//         var output = fs.createWriteStream('./target/target.tar.gz');
-//         for (var file of fileList) {
-//             archive.on('error', function (err) {
-//                 throw err;
-//             })
-//             // pipe archive data to the output file
-//             archive.pipe(output)
-//             // append files
-//             archive.file(`./src/${file}`, { name: `./src/${file}` });
-//             console.log(x)
-
-//         }
-//         // Wait for streams to complete
-//         archive.finalize()
-//         console.log(fileList)
-//         resolve(fileList)
-//     })
-// }
-
-// async function fnAsync() {
-    // await readDirnMakeTarget()
-    // finished(await pipe())
-    // await compressTargetFiles()
-// }
-// fnAsync();
-readDirnMakeTarget()
-pipe()
+function compressTargetFiles() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
 
 
-while (1) {
-    var compressList =fs.readdirSync("./target")
-    compressList.forEach((x) => {
-        var output = fs.createWriteStream('./target/target.tar.gz');
-        archive.on('error', function (err) {
-            throw err;
-        })
-        // pipe archive data to the output file
-        archive.pipe(output)
-        // append files
-        archive.file(`./target/${x}`, { name: `./target/${x}`});
-        console.log(x)
+            var compressList = fs.readdirSync("./target")
+            compressList.forEach((x) => {
+                var output = fs.createWriteStream('./target/tageto.tar.gz');
+                archive.on('error', function (err) {
+                    // throw err;
+                })
+                // pipe archive data to the output file
+                archive.pipe(output)
+                // append files
+                archive.file(`./target/${x}`, { name: `./target/${x}` });
+                console.log(x)
+            })
+
+            // Wait for streams to complete
+            archive.finalize()
+            resolve('compress: compress file finsished');
+        }, 500);
     })
-    // Wait for streams to complete
-    archive.finalize()
-    break
 }
 
+async function fnAsync() {
+    console.log('starting function 1')
+    t = await readDirnMakeTarget()
+    console.log(t)
+    console.log('starting function 2')
+    b = await pipe()
+    console.log(b)
+    console.log('starting function 3')
+    c = await compressTargetFiles()
+    console.log(c)
+    console.log('function complete')
+}
+fnAsync();
 
 
 
