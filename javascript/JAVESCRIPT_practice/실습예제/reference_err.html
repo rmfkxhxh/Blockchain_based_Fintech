@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="result"></p>
+
+    <script>
+        let x = 5;
+
+        try{
+            x = y +1;
+        }
+        catch(err) {
+            document.getElementById("result").innerHTML = "error name : "+ err.name + " err message : "+ err.message;
+        }
+    </script>
+</body>
+</html>

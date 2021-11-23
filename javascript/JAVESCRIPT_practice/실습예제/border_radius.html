@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myDiv {
+            border: 2px, solid, purple;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="setradiusFunc()"> Click Me</button>
+    <div id="myDiv">
+        <h1>Hello World</h1>
+    </div>
+
+    <script>
+        function setradiusFunc() {
+            // document.getElementById("myDiv").style.borderRadius = "25px";
+            document.getElementById("myDiv").style.borderBottomRadius = "25px";
+            document.getElementById("myDiv").style.borderBottomRightRadius = "25px";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array_push</title>
+</head>
+<body>
+    <h1>Array_push</h1>
+    <button onclick="myFunction()">Click</button>
+    <div id="result"></div>
+    <script>
+        const frutis = ["banna", "orange", "apple", "grape"]                     //배열생성
+        document.getElementById("result").innerHTML = frutis;                    //mango 추가 전 배열 띄우기
+        function myFunction(){
+            document.getElementById("result").innerHTML = frutis.unshift("mango");  //mango 추가
+            document.getElementById("result").innerHTML = frutis;                //mango 추가 후 배열 띄우기
+        }
+    </script>
+
+</body>
+</html>

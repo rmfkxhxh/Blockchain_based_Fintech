@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array_concat</title>
+</head>
+<body>
+    <h1>Array_concat</h1>
+    <div id="result"></div>
+    <script>
+        const myGirls = ["Cecile", "Lone"];
+        const myBoys = ["Emil", "Tobia", "Lucas"];
+        const myBaby = ["Robine", "Morgan"];
+        const myChildren = myGirls.concat(myBoys, myBaby);
+        const myChildren2 = myChildren.concat("peter");
+
+        document.getElementById("result").innerHTML = myChildren2;
+    </script>
+</body>
+</html>

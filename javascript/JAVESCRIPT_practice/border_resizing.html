@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div.container {
+            width: 300px;
+            border: 1px solid black;
+        }
+        div.box {
+            width: 150px;
+            border: 3px solid coral;
+            float: left;
+            padding: 10px;
+  
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="box1">This is Box1</div>
+        <div class="box" id="box1">This is Box2</div>
+        <div style="clear:both;"></div>    <!--float한거 여기서는 clear 처리-->
+    </div>
+    <button onclick="myFunction()">Click ME</button>
+
+    <script>
+        function myFunction(){
+            document.getElementById("box1").style.MozBoxSizing = "border-box"; // old Firefox
+            document.getElementById("box2").style.MozBoxSizing = "border-box"; // old Firefox
+
+            document.getElementById("box1").style.boxSizing = "border-box"
+            document.getElementById("box2").style.boxSizing = "border-box"
+        }
+    </script>
+</body>
+</html>

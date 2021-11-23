@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="myFunction()">Click me!!!</button>
+    <p id="result"></p>
+
+    <script>
+        function myFunction(){
+            var text;
+
+            switch(new Date().getDate()) {
+                case 6:
+                    text = "Today is Saturday";
+                break;
+                case 2:
+                    text = "Today is Tuseday";
+                break;
+                case 0:
+                    text = "Today is Sunday";
+                break;
+                default :
+                    text = "Looking forward to the Weekend!";
+            }
+            document.getElementById("result").innerHTML = text;
+        }
+    </script>
+</body>
+</html>

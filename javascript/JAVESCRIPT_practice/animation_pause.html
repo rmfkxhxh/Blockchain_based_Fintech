@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: dodgerblue;
+            position: relative;
+            animation: mymove 2s infinite;
+            animation-play-state: paused;
+        }
+
+        @keyframes mymove {
+            fromn {left : 0px;}
+            to {left : 200px}
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="playFunc()">Play</button>
+    <button onclick="pausedFunc()">Pause</button>
+    <div id="myDiv"></div>
+
+    <script>
+        function playFunc(){
+            document.getElementById("myDiv").style.animationPlayState = "running";
+        }
+
+        function pausedFunc(){
+            document.getElementById("myDiv").style.animationPlayState = "paused";
+        }
+    </script>
+</body>
+</html>

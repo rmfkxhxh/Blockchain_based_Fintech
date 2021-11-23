@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="result1"></p>
+    <p id="result2"></p>
+
+    <script>
+        class Vchicle {
+            constructor(name) {
+                this.name = name;
+            }
+
+            present() {
+                return 'I have a ' + this.name;
+            }
+        }
+
+        class Bike extends Vchicle {
+            constructor(name, movingType) {
+                super(name);
+                this.myType = movingType;
+            }
+
+            show() {
+                return "I am " + this.name + ", moving " + this.myType + " tire"; 
+            }
+        }
+
+        class Car extends Vchicle {
+            constructor(name, movingType) {
+                super(name);
+                this.myType = movingType;
+            }
+
+            show() {
+                return "I am " + this.name + ", moving " + this.myType + " tire"; 
+            }
+        }
+
+        let autoBike = new Bike("Honda", 2);
+        let myCar = new Car("BMW", 4);
+
+        document.getElementById("result1").innerHTML = autoBike.show();
+        document.getElementById("result2").innerHTML = myCar.show();
+
+    </script>
+</body>
+</html>

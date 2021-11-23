@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="result1"></p>
+    <p id="result2"></p>
+
+    <script>
+        class Car {
+            constructor(brand) {
+            this._carname = brand;
+            }
+
+            get carname() {
+                return this._carname;
+            }
+
+            set carname(x) {
+                this._carname = x;
+            }
+        }
+
+        let myCar = new Car("BMW");
+        document.getElementById("result1").innerHTML = myCar.carname;
+        myCar.carname = "Benz";
+        document.getElementById("result2").innerHTML = myCar.carname;
+    </script>
+</body>
+</html>

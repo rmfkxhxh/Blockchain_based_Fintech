@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="myFunction()">Click</button>
+    <div id="result"></div>
+    <script>
+        function myFunction(){
+            var text = "";
+            var i = 0, j = 0;
+            Loop1:
+            for(i = 0; i < 3; i++) {
+                text += "<br>" + "i = " + i + ", j =";
+                Loop2:
+                for(j = 0; j < 5; j++){
+                    if(j === 2){
+                        break Loop1;
+                    }
+                    document.getElementById("result").innerHTML = text += j + " ";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

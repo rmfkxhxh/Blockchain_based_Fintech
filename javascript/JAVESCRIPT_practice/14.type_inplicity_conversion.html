@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implicity conversion</title>
+</head>
+<body>
+    <h1>Implicity conversion</h1>
+    <div id="result"></div>
+    <script>
+        var x = 10 + "string";
+        document.getElementById("result").innerHTML = x + "<br>";
+        x = "3" * "5";
+        document.getElementById("result").innerHTML += x + "<br>"
+        x = "1" - "string";
+        document.getElementById("result").innerHTML += x + "<br>"
+    </script>
+</body>
+</html>

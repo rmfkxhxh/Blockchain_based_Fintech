@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicity conversion</title>
+</head>
+<body>
+    <h1>Explicity conversion</h1>
+    <div id="result"></div>
+    <script>
+        document.getElementById("result").innerHTML = Number("10000") + "<br>"
+        document.getElementById("result").innerHTML += String(123456) + "<br>"
+        document.getElementById("result").innerHTML += Boolean(0) + "<br>"
+        document.getElementById("result").innerHTML += Object(24) + "<br>"
+    </script>
+</body>
+</html>

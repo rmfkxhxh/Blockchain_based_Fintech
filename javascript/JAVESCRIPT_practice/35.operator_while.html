@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>operator_while</title>
+</head>
+<body>
+    <h1>while Loop</h1>
+    <div id="result"></div>
+    <script>
+
+        // let text = "";
+        // let i = 0;
+        
+        // while(i < 10)
+        // {
+        //     text += "<br>The number is " + i;
+        //     i++;
+        // }
+        // document.getElementById("result").innerHTML = text;
+
+        
+        // let text = "";
+        // let i = 0;
+        
+        // while(i < 10){
+        //     if(i % 2 == 0)
+        //     {
+        //         text += "<br>" + i + "는(은) 짝수입니다. ";
+        //     }
+        //     else
+        //     {
+        //         text += "<br>" + i + "는(은) 홀수입니다. ";
+        //     }
+        //     i++;
+        // }
+        // document.getElementById("result").innerHTML = text;
+
+
+        let text = "";
+        let i = 0;
+        
+        while(i < 10){
+            i++;
+            if(i == 5)
+                continue;
+
+            text += "<br>The numver is " + i;
+        }
+        document.getElementById("result").innerHTML = text;
+
+    </script>
+</body>
+</html>

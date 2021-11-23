@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="myFunction()">Click Me</button>
+    <div id="result"></div>
+    <script>
+        function myFunction() {
+            var text = "";
+            var i = 0;
+            var sum = 0;
+
+            //연습 1
+            // while(i <5) {
+            //     text += "<br> The number is " + i;
+            //     i++
+            //     if(i ===3){
+            //         break;
+            //     }
+            // }
+            //document.getElementById("result").innerHTML = text;
+
+
+
+            //연습 2
+            while (i < 100) {
+                sum += i+1;
+                i++;
+            }
+            text = "Sum is " + sum;
+            document.getElementById("result").innerHTML = text;
+        }
+    </script>
+</body>
+</html>

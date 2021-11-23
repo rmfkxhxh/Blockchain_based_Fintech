@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myDiv {
+            column-count:3;
+            /* height: 100px;
+            column-fill: auto; */
+        }
+    </style>
+</head>
+<body>
+    <button onclick="setDivColumn()">Click</button>
+    <div id="myDiv">
+        <h2 id="myH2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h2> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+    </div>
+
+    <script>
+        function setDivColumn() {
+            // document.getElementById("myDiv").style.columnCount = "3";
+            // document.getElementById("myDiv").style.columnFill = "balance";
+            // document.getElementById("myDiv").style.columnGap = "50px";
+            // document.getElementById("myDiv").style.columnRule = "5px outset lightblue";
+            // document.getElementById("myDiv").style.columnWidth = "100px";
+            document.getElementById("myH2").style.columnSpan = "all";
+        }
+    </script>
+</body>
+</html>

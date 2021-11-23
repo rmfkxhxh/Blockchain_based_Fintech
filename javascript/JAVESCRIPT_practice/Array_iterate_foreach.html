@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array_iterate for each</title>
+</head>
+<body>
+    <h1>Array_iterate for each</h1>
+    <div id="result"></div>
+    <script>
+        const number = [45, 4, 9, 15, 25];
+
+        let txt = "";
+        number.forEach(myFunction);
+        document.getElementById("result").innerHTML = txt;
+
+        function myFunction(value, index, array) {   //(value, index, array)는 그냥 외움
+            txt += value + "<br>"
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>constructor(객체 생성자)</title>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        function Person(fist, last, age, eye) {
+            this.firstName = fist;
+            this.lastName = last;
+            this.age = age;
+            this.eyeColor = eye
+            this.fullname = function() {
+                return this.firstName + " " + this.lastName;
+            }
+        }
+
+        const mySon = new Person("Jhon", "Doe", "12", "gray");
+        mySon.nationality = "Korean";
+        document.getElementById("result").innerHTML = "My son is " + mySon.fullname() + ".";
+
+    </script>
+</body>
+</html>

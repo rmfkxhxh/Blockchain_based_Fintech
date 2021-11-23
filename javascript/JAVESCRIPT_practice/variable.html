@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variable</title>
+</head>
+<body>
+    <h2>variable define and initialize</h2>
+    <div id="result"></div>
+    <script>
+        var num = 10;
+        document.getElementById("result").innerHTML = num + "<br>";
+        num = [10, 20, 30]  //array num[0] = 10, num[1] = 20, num[3] = 30//
+        document.getElementById("result").innerHTML += num + "<br>"
+        var num;  //ignored resefine
+        document.getElementById("result").innerHTML += num + "<br>"
+    </script>
+</body>
+</html>

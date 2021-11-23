@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inheritance</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script>
+        class Car {
+            constructor(brand) {
+                this.carname = brand;
+            }
+            present(){
+                return 'I have a ' + this.carname;
+            }
+        }  //end of car
+
+        class Model extends Car{
+            constructor(brand, mod) {
+                super(brand);
+                this.Model = mod;
+            }
+            show() {
+                return this.present() + ', it is a ' +this.Model;
+            }
+        }
+
+        let myCar = new Model("frod", "mustang");
+        document.getElementById("result").innerHTML = myCar.show();
+
+        // //for example
+        // class vehicle {
+        //     constructor(name){
+        //         this.name = name;
+        //     }
+        // }
+
+        // class Car extends vehicle{
+        //     constructor(name, usage) {
+        //         super(name);
+        //         this.usage = usage;
+        //     }
+        // }
+        // class autobike extends vehicle{
+        //     constructor(name, usage) {
+        //     super(name)
+        //     this.usage = usage;
+        //     }
+        // }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .mystyle {
+        width: 300px;
+        height: 50px;
+        text-align: center;
+        background-color: orangered;
+        color: white;
+        margin-bottom: 10px;
+        float: left;
+        margin: 8px;
+    }
+</style>
+<body>
+    <button onclick="myFunction()">Tri it</button><br>
+    <div id="myDiv" class="mystyle">
+        I am DIV element
+    </div>
+
+    <div class="mystyle">
+        I am DIV element
+    </div>
+
+    <script>
+        function myFunction(){
+            var x = document.getElementsByTagName("DIV")[0];
+
+            if(x.id === "myDiv"){
+                x.style.fontSize = "30px";
+            }
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array_splice</title>
+</head>
+<body>
+    <h1>Array_splicing</h1>
+    <button onclick="myFunction()">Click</button>
+    <div id="result1"></div>
+    <div id="result2"></div>
+    <script>
+        const frutis = ["banna", "orange", "apple", "grape"];
+        document.getElementById("result1").innerHTML = "original Array : <br>" + frutis;
+        function myFunction() {
+            frutis.splice(2,0, "lemon", "kiwi");   // 2번째 배열자리이니 즉, 3번째 자리에 / 0이니 즉, 값을 삭제하지 않고 (1은 맨 뒤로부터 1개 데이터 삭제)/ "lemon", "kiwi" 삽입, 1은 뒤에 1개 삭제하고 삽입 //
+            document.getElementById("result2").innerHTML = "New Array : <br>" + frutis;
+        }
+    </script>
+</body>
+</html>

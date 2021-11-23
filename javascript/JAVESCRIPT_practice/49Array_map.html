@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array_iterate_map</title>
+</head>
+<body>
+    <h1>Array_iterate_map</h1>
+    <!-- <div id="result"></div>
+    <script>
+        const fruis = new Map([
+            ["apples", 500],
+            ["bananas", 300],
+            ["grapes", 700]
+        ]);
+
+        let txt = "";
+        for(const x of fruis)
+        {
+            txt += x + "<br>";
+        }
+        document.getElementById("result").innerHTML = txt;
+    </script> -->
+
+    <script>
+        const map = new Map();
+        map.set("2019101","홍길동");
+        map.set("2019102","김사랑");
+        map.set("2019103","강동수");
+
+        console.log(map.get("201901"));
+        map.delete("2019103")
+        console.log(map.has("2019103"));
+
+        map.forEach((value, key) => concole.log(key + " , "+value));
+
+        for(let [key, value] of map) {
+            console.log(key+" , "+value);
+        }
+
+        const keys = map.keys();
+        for(let key of keys) {
+            console.log(map.get(key));
+        }
+    </script>
+</body>
+</html>

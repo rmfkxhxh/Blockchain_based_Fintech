@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for Loop</title>
+</head>
+<body>
+    <h2>for Loop</h2>
+    <div id="result"></div>
+    <script>
+        const cars = ["BMW", "volvo", "Saab", "ford", "fiat", "audi"];
+
+        let text = "";
+
+        for(let i = 0; i < cars.length; i++) {
+            text += cars[i] + "<br>"
+            if(i >= 2)
+            break;
+        }
+        document.getElementById("result").innerHTML = text;
+
+            // for(var i = 0; i < 9 ; i++) {    
+            // document.write(i + "<br>");
+            //}
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="checkSwitch()">Click</button>
+    <p id="result"></p>
+
+    <script>
+        function checkSwitch() {
+            let text;
+
+            switch(new Date().getDay()) {
+                case 1: 
+                case 2: 
+                    text = "Today is tuseday!!!" 
+                    break;
+                case 3:
+                    text = "Today is wedesday!!!" 
+                default :
+                    text = "Looking forward to the Weekend!!!" 
+                    break;
+                case 4:
+                case 5:
+                    text = "Soon it is Weekend!!!"
+                    break;
+                case 0:
+                case 6:
+                    text = "It is Weekend!!!"
+            }
+        document.getElementById("result").innerHTML = text;
+        }
+    </script>
+</body>
+</html>

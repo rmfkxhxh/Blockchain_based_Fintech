@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myDiv {
+            border: thick solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiv">
+        <h1>This is a DIV</h1>
+    </div>
+    <br>
+    <button onclick="changeBorderColor()">Click Me</button>
+
+    <script>
+        function changeBorderColor(){
+            document.getElementById("myDiv").style.borderRightColor = "red";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>foovar variable</title>
+</head>
+<body>
+    <h2>foobar varialbe</h2>
+    <p id="root"></p>
+    <script>
+    
+        let foo = "foo1"
+        const bar = "bar1";
+        console.log(foo);    //foo1//
+        console.log(bar);    //bar1//
+
+        if(true)
+        {
+            let foo = "foo2";
+            console.log(foo);   //foo2//
+            console.log(bar);   //bar1//
+        }
+
+        console.log(foo);       //foo1//   
+
+        bar = "bar2";       
+        console.log(bar);   //Uncaught//
+         
+    </script>
+</body>
+</html>
