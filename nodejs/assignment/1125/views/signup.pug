@@ -14,20 +14,18 @@ html(lang="ko")
             div
                 form(action="/info" method="POST")
                     <br> 
-                    |이름 : 
+                    p 이름 : 
                     input(name = "user_name" type = "text" require placeholder = "") 
                     <br>
-                    |아이디 :  
+                    p 아이디 :  
                     input(name = "user_id" type = "text" require placeholder = "") 
                     <br>
-                    |비밀번호 : 
+                    p 비밀번호 : 
                     input(name = "password" type = "password" require placeholder = "") 
                     <br>
-                    |주소 :  
+                    p 주소 :  
                     input(name = 'post' id="member_post"  type="text" placeholder="눌러서 검색하기" readonly onclick="findAddr()")
-                    | 
                     input(name = 'addr' id="member_addr" type="text" placeholder="" readonly)
-                    | 
                     input(name = 'detai' type="text" placeholder="상세주소 (동/호수)")
                     br
                     input(type="submit" value= 'sign up')

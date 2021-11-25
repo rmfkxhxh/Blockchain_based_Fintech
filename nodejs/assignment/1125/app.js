@@ -9,7 +9,7 @@ const dotenv = require("dotenv").config();
 app.use(express.static('views'))
 
 app.use(bodyParser.json());
-var urlencodedParser = bodyParser.urlencoded({ extended: true })
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(upload.array())
 
 app.use(session({
@@ -47,7 +47,7 @@ app.get('/information', (req, res) => {
     }
 })
 
-app.post('/info', urlencodedParser, (req, res) => {
+app.post('/info', (req, res) => {
     console.log(req.body)
     var response = {
         user_name: req.body.user_name,
