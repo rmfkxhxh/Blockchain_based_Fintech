@@ -1,0 +1,33 @@
+doctype html
+html(lang="ko")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Signup Page
+        script(src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js")
+        script(src="./kakaoapi.js")
+        //- include kakaoapi.js
+
+    body 
+        h4 회원정보 입력
+            div
+                form(action="/info" method="POST")
+                    <br> 
+                    |이름 : 
+                    input(name = "user_name" type = "text" require placeholder = "") 
+                    <br>
+                    |아이디 :  
+                    input(name = "user_id" type = "text" require placeholder = "") 
+                    <br>
+                    |비밀번호 : 
+                    input(name = "password" type = "password" require placeholder = "") 
+                    <br>
+                    |주소 :  
+                    input(name = 'post' id="member_post"  type="text" placeholder="눌러서 검색하기" readonly onclick="findAddr()")
+                    | 
+                    input(name = 'addr' id="member_addr" type="text" placeholder="" readonly)
+                    | 
+                    input(name = 'detai' type="text" placeholder="상세주소 (동/호수)")
+                    br
+                    input(type="submit") 

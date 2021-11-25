@@ -1,0 +1,25 @@
+doctype html
+html(lang='ko')
+    head 
+        title="Hello Pug"
+        style
+            include pug.css 
+        //- style.
+        //-     #division {
+        //-         background-color:red;
+        //-         color:white;
+        //-         width: 200px;
+        //-         height: 100px;
+        //-     }
+    body
+        p.greetings#people Hello PUG~~
+        //- greeing class; people id
+        //- div.container.column.main#division(style = "background-color: red; width : 100px; height: 100px; color:white")
+        div.container
+
+            |아아아
+            br
+            |줄바꿈
+            |줄이음 
+        
+        

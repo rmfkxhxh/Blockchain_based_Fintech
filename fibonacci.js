@@ -5,17 +5,13 @@
 // 2번째 자리부터, 입력인자에 할당된 숫자까지 1씩 증가하는 반복 연산을 수행한다. 
 // 반복이 순환될 때마다 출력되는 값을 배열인 결과값의 마지막 요소를 추가한다.
 // 결과값을 출력한다.
-// let a = [0, 2]
-// function fb(x) {
-//     for (i = 0; i < x; i++) {
+// let a = 
+function fb(x) {
+  var a = [0, 1]
+    for (i = 0; i < x; i++) {
         
-//       a.push(a[i] + a[i+1])
-//     }
-//     console.log(a)  
-// }
-// fb(10)
-function num(a,b){
-  for(a > 1; a < 10000; && b > 1; b < 10000) {
-
-  }
+      a.push(a[i] + a[i+1])
+    }
+    console.log(a)  
 }
+// fb(10)

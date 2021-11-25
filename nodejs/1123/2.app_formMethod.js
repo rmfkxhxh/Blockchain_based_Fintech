@@ -28,7 +28,7 @@ app.get("/process_get", (req, res) => {
     res.end(JSON.stringify(response))
 })
 
-app.get("/process_post", urlencodedParser, (req, res) => {
+app.post("/process_post", urlencodedParser, (req, res) => {
     //prepare output in JSON format
     var response = {
         first_name:req.body.first_name,
