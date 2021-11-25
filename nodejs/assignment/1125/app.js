@@ -14,6 +14,7 @@ app.use(upload.array())
 
 app.use(session({
     secret: process.env.SECRET,
+    store: 
     secure: false,
     resave: false,
     saveUninitialized: true,
