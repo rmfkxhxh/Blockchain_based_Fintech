@@ -6,25 +6,18 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title 회원정보 확인
     body 
-        h1=${name} 
-        |님의 입력 정보 
+        h1 #{user_name} 님의 
+            h2 입력 정보 
         <br> 
             div.contents
-                |이름 : 
-                p=user_name
+                |이름 : #{user_name}
                 <br>
-                |아이디 :
-                p=user_id  
+                |아이디 : #{user_id}
                 <br>
                 //- |비밀번호 : 
                 //- p=password
                 //- <br>
-                |주소 : 
-                p=post
-                | 
-                p=addr
-                | 
-                p=detai
+                |주소 : #{post} #{addr} #{detai}
                 br
 
 

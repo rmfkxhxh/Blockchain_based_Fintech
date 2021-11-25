@@ -23,7 +23,7 @@ app.use(session({
 
 var Users = [];
 app.set('view engine', 'pug');
-app.set("views", '');
+app.set("views", './views');
 
 const port = 3000;
 const host = '127.0.0.1';
