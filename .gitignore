@@ -1,4 +1,4 @@
-/nodejs/node_modules
+nodejs/node_modules
 package-lock.json
 package.json
 /nodejs/1122/express-work/helloworld/node_modules
@@ -11,3 +11,4 @@ nodejs/1119.zip
 nodejs/1125/routingwork/node_modules
 nodejs/1125/template/node_modules
 nodejs/1125/authentification/node_modules
+/node_modules
