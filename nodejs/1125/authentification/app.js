@@ -54,10 +54,6 @@ app.post('/signup', (req, res) => {
     }
 })
 
-app.get('/protected_page', (req,res) => {
-    res.render('70_protected_page')
-});
-
 function checkSignIn(req, res){
     if(req.session.user){
         next();
@@ -72,8 +68,11 @@ function checkSignIn(req, res){
 //     res.render('protect_page', {id: req.session.user.id})
 // });
 
-app.get('protected_page', function(req, res){
-    res.render('protect_page', {id: req.session.user.id})
+app.get('/protected_page', function(req, res){
+    res.render('70_protected_page', {
+        id: req.session.user.id 
+        // message: "Protected_page"
+    })
 });
 
 app.listen(port, host, () => {
