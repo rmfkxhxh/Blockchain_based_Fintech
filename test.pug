@@ -1,0 +1,19 @@
+style.
+    *{position: relative;}
+    li{ list-style:none; padding: 0; display:inline; }
+    li.mcate::after{ content:" > "; } li.cate1::after{ content:" > "; }
+    a{text-decoration: none; }
+    #contents{
+        margin:0 25%;
+    }
+
+div
+    include ./common/head
+    
+    
+div#contents
+    |#{page}
+    
+    
+div
+    include ./common/footer
