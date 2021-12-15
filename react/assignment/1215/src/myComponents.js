@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 
 
 function Headercomp(props) {
+    const mounted = useRef();
     let [headerTitle, setHeaderTitle] = useState('This is my header from useState') 
+    
 
     const ChangeHeaderTitle = () => {
         useEffect(() => {
@@ -14,6 +16,14 @@ function Headercomp(props) {
         }, [])
         return ''
     }
+
+    useEffect(()=> {
+        if(!mounted.current) {
+            mounted.current = true;
+        } else {
+            document.getElementById('div1').innerHTML = "The headerTitle has been updated to " + headerTitle
+        }
+    })
     return (
         <div>
             <h1>HeaderComp</h1>
@@ -79,8 +89,6 @@ function Gundam(props) {
 
 function Container(props) {
     let [show, setShow] = useState(true)
-
-
 
     function deleteHandler() {
         // alert("The myheader is about to be unmounted")
