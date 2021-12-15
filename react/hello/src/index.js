@@ -2,7 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {Car, Garage} from './Car';
+// import {Car, Garage} from './Car';
+import Car from './Car';
+import Gundam from './Gundam';
+import Arcangel from './Arcangel'
+import Headercomp from './Headercomp'
+import Container from './Unmountcomp'
+
 // import Garage from './Car';
 import reportWebVitals from './reportWebVitals';
 function Hello(props) {
@@ -10,7 +16,30 @@ function Hello(props) {
 }
 ReactDOM.render(
   <React.StrictMode>
-    <Garage color="red"/>
+    <Headercomp />
+    {/* <Garage color="red"/> */}
+    {/* <Car color="blue" otherColor='red'/> */}
+    {/* <Gundam model="limited edition"/> */}
+    <Gundam cargo="Archangel"/>
+    {/* <Arcangel /> */}
+  </React.StrictMode>,
+  // <Car />,
+  document.getElementById('root')
+);
+ReactDOM.render(
+  <React.StrictMode>
+    <Headercomp newTitle="StaticProps New Title!!~~~!!!!!!!"/>
+  </React.StrictMode>,
+  document.getElementById('header')
+);
+ReactDOM.render(
+  <React.StrictMode>
+    {/* <Garage color="red"/> */}
+    {/* <Car color="blue" otherColor='red'/> */}
+    {/* <Gundam model="limited edition"/> */}
+    {/* <Gundam cargo="Archangel"/> */}
+    {/* <Arcangel /> */}
+    <Container />
   </React.StrictMode>,
   // <Car />,
   document.getElementById('root')

@@ -1,13 +1,15 @@
-function Car(props) {
-    return <h1>This is my {props.color} car~~~</h1>
-}
-function Garage(props) {
-    return( 
-        <>
-            <h1>My Garage in the wish car</h1>
-            <Car color="red" />
-        </>
-    )
+import React from 'react';
+
+class Car extends React.Component {
+    constructor() {
+        super();
+        this.state = {color: "red"};
+    }
+
+    render() { // return html
+        // return <h1>This is my {this.state.color} Car~~~~</h1>;
+        return <h1>This is my {this.props.color} Car~~~~ and I have another {this.props.otherColor} Car</h1>;
+    }
 }
 
-export {Car, Garage};
+export default Car;
