@@ -107,18 +107,6 @@ function Container(props) {
 
         return ("")
     }
-    function Checkmounted() {
-       
-        useEffect(() => {
-    
-            console.log('alert from checkmounted: \nrender!');
-
-
-            return () => alert('alert from checkmounted: \nunmounting');
-        }, [])
-
-        return ("")
-    }
 
     const Child = () => {
         return (
