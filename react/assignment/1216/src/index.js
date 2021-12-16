@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import {Gundam, Archangel, Football, Goal, Fate} from './MyComponent';
 import reportWebVitals from './reportWebVitals';
 

@@ -51,7 +51,7 @@ class Football extends React.Component {
     };
 
     render() {
-        return <button type="button" onMouseMove={(event) => this.shoot("A tremendous Goal from Son!~!", event)}>Take the Freakin shot!!!</button>
+        return <button type="button" onMouseMove={(event) => this.shoot('A tremendous Goal from Son!~!', event)}>Take the Freakin shot!!!</button>
     };
 };
 
