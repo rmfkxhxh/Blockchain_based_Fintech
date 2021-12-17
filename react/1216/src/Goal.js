@@ -12,7 +12,7 @@ function Goal(props) {
     return (
         <>
             {isGoal ? <MadeGoal/> : <MissGoal/>}
-        </> //삼학연산자
+        </> //삼항연산자
     )
 }
 const MissGoal = () => {
