@@ -1,15 +1,15 @@
 import React from "react";
 
-// class Gundam extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = { model: props.model }
-//     }
+class Gundam extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { model: props.model }
+    }
 
-//     render() {
-//         return <h1>This is {this.state.model} Gundam</h1>
-//     }
-// }
+    render() {
+        return <h1>This is {this.state.model} Gundam</h1>
+    }
+}
 class Archangel extends React.Component {
     constructor(props) {
         super(props);
