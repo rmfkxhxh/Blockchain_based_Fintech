@@ -1,15 +1,15 @@
 import React from "react";
 
-class Gundam extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { model: props.model }
-    }
+// class Gundam extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = { model: props.model }
+//     }
 
-    render() {
-        return <h1>This is {this.state.model} Gundam</h1>
-    }
-}
+//     render() {
+//         return <h1>This is {this.state.model} Gundam</h1>
+//     }
+// }
 class Archangel extends React.Component {
     constructor(props) {
         super(props);
@@ -101,5 +101,38 @@ class Fate extends React.Component {
         )
     };
 };
+// import React from 'react';
+
+function Gundam(props) {
+    const constructor = () => {
+        super(props);
+        this.state = {
+            camp: "Earth",
+            model: "X10A",
+            engine: "Atomic",
+            year: "Cosmic 70",
+            pilot: "Yamato"
+        };
+    }
+
+    const changeModel = () => {
+        this.setState({model: "X109 Justice"});
+    }
+
+    return (
+        <div>
+            <h1>{this.state.model}</h1>
+            <h2>The camp is {this.state.camp}</h2>
+            <h2>The engine is {this.state.engine}</h2>
+            <h2>The Pilot Name is {this.state.pilot}</h2>
+            <h2>{this.state.year} Space Centry</h2>
+            <h2>The Cargo is {this.props.cargo}</h2>
+            <button type="button" onClick={this.changeModel}>Change Model</button>
+        </div>
+        );
+    }
+
+// export default Gundam;
+
 
 export { Gundam, Archangel, Football, Goal, Fate };

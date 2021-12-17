@@ -5,7 +5,7 @@ function Wow() {
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        setInput(values => ({...values, [name]: value})) //키는 []
+        setInput(inputsValues => ({...inputsValues, [name]: value})) //키는 []
     }
     const handleSubmit = (e) => {
         e.preventDefault();
