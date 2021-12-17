@@ -7,11 +7,11 @@ class Headercomp extends React.Component {
             headertitle:"This is my page of header"};
         }
 
-        // static getDerivedStateFromProps(props, state) {
-        //     return ({headertitle: props.newTitle});
-        //     // state.headertitle = props.newTitle
-        //     // return (state.headertitle);
-        // }
+        static getDerivedStateFromProps(props, state) {
+            return ({headertitle: props.newTitle});
+            // state.headertitle = props.newTitle
+            // return (state.headertitle);
+        }
 
 
         componentDidMount() {

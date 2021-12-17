@@ -77,7 +77,7 @@ class Goal extends React.Component {
                 {this.state.isGoal ? <this.MadeGoal /> : <this.MissGoal />}
                 <button type="button" onMouseOut={() => this.changeGoalState()}>Take the shot!!!</button>
             </>
-        ) //삼학연산자
+        ) //삼항연산자
     };
 };
 
