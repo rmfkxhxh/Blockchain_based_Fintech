@@ -1,0 +1,25 @@
+ul {
+    /* background-color: skyblue;  */
+    display: flex;
+    height: 48px;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 0;
+ }
+ 
+ li {
+     background-color: rgb(144, 167, 190);
+     width: 33%;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+     padding-right: 15px;
+ }
+ 
+ li:hover {
+     background-color: lightgrey;
+ }
+ div {
+    color: white;
+ }

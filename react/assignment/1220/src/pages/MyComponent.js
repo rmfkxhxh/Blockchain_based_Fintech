@@ -47,7 +47,11 @@ class Football extends React.Component {
     };
 
     render() {
-        return <button type="button" onMouseMove={(event) => this.shoot('A tremendous Goal from Son!~!', event)}>Take the Freakin shot!!!</button>
+        return (
+            <div>
+                <button type="button" onMouseMove={(event) => this.shoot('A tremendous Goal from Son!~!', event)}>Take the Freakin shot!!!</button>
+            </div>
+        )
     };
 };
 
@@ -69,10 +73,10 @@ class Goal extends React.Component {
 
     render() {
         return (
-            <>
+            <div>
                 {this.state.isGoal ? <this.MadeGoal /> : <this.MissGoal />}
                 <button type="button" onMouseOut={() => this.changeGoalState()}>Take the shot!!!</button>
-            </>
+            </div>
         ) //삼항연산자
     };
 };
