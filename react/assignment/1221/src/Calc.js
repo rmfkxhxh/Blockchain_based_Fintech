@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
+/* eslint no-eval: 0 */
 
 export default function Calc() {
     const [inputs, setInputs] = useState(0);
@@ -7,19 +8,20 @@ export default function Calc() {
 
     const addToInput = (e) => {
         // nameBtn.current.reset();
+        
+        const lastIn = inputs[inputs.length-1]
+        console.log('target value: ' + e.target.value);
+        console.log();
         // const inp = [inputs]
-        const lastIn = [inputs].at(-1)
         if (inputs === 0) {
             setInputs(e.target.value);
         } else {
-            if (lastIn === '+' || lastIn === '-' || lastIn === '/' || lastIn === '*') {
-                setInputs([inputs].slice(0, ([inputs].length - 1)) + e.target.value)
+            if ((lastIn === '+' || lastIn === '-' || lastIn === '/' || lastIn === '*') && ((e.target.value === '+' || e.target.value === '-' || e.target.value === '/' || e.target.value === '*'))) {
+                setInputs(inputs.slice(0, (inputs.length - 1)) + e.target.value)
             } else {
                 setInputs(inputs + e.target.value);
             }
         }
-
-        console.log("input : ", lastIn)
     };
 
     const evalInputs = () => {
