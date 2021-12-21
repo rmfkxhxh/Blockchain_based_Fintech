@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-export default function InputExam() {
+export default function Calc() {
     const [inputs, setInputs] = useState(0);
 
     // const resultRef = useRef();
