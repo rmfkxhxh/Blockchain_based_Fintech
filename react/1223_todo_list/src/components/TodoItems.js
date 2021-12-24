@@ -70,7 +70,6 @@ function TodoItems({ id, done, text }) {
             <CheckCircle done={done} onClick={onToggle}>{done && <MdDone />}</CheckCircle>
             <Text done={done}>{text}</Text>
             <Remove onClick={onRemove} >
-                {/*  똑같이 다지워짐요 */}
                 <MdDelete />
             </Remove>
         </TodoItemsBlock>
