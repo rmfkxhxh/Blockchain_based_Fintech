@@ -6,7 +6,7 @@ module.exports = () => {
       mongoose.set("debug", true);
     }
     mongoose.connect(
-      "mongodb://localhost:27017/til",
+      "mongodb+srv://okopan:a12341234@okopan.itc6v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
       {
         dbName: "til"
       },
