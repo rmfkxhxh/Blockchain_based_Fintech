@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "mongodb": "^4.2.2",
+    "mongoose": "^6.1.5",
     "redux": "^4.1.2"
   }
 }
