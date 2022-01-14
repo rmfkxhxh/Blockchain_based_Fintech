@@ -1,0 +1,24 @@
+{
+  "name": "0114",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js",
+    "start": "node index.js",
+    "dev": "concurrently \"yarn run server\" \"cd ./crawling_prac && yarn run start\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "concurrently": "^7.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "phantom": "^6.3.0",
+    "puppeteer": "^13.0.1",
+    "react-images-uploading": "^3.1.3"
+  }
+}
