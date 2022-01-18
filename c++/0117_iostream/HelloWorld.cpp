@@ -8,8 +8,8 @@ using namespace std;
 
 int main()
 {
-    // std::cout << "Hellow World!!~~~\n¤¾¤·¤¾¤·\n" << std::endl;
-    cout << "Hellow World!!~~~\n¤¾¤·¤¾¤·\n" << endl;
+    // std::cout << "Hellow World!!~~~\nã…ã…‡ã…ã…‡\n" << std::endl;
+    cout << "Hellow World!!~~~\nã…ã…‡ã…ã…‡\n" << endl;
     
     return 0;
 }

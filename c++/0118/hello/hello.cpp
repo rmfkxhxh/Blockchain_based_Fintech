@@ -3,6 +3,6 @@
 */
 int main() {
 	printf("HEllo World\n");
-	printf("¤¾¤·¤¾¤·¾È³ç\n");
+	printf("ã…Žã…‡ã…Žã…‡ì•ˆë…•\n");
 	return 0;
 }
