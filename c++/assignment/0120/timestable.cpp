@@ -49,6 +49,7 @@ int main()
             ss << inNum;
             ss >> num;
             clog << "Your input is " << num << endl;
+            cout << "한글 테스트" << endl;
             for (int i = 1; i < 10; i++)
             {
                 cout << num << " * " << i << " = " << i * num << "\n";
