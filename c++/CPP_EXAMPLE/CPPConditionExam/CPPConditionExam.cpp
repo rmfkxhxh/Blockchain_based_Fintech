@@ -9,15 +9,15 @@ using namespace std;
 int GetCurrentTime(void)
 {
     //mac용
-    /*time_t curTime = time(NULL);
-    struct tm* pLocalTime = NULL;*/
+    time_t curTime = time(NULL);
+    struct tm* pLocalTime = NULL;
 
     //windows
-    time_t curTime = time(NULL);
-    struct tm pLocalTime;
+    // time_t curTime = time(NULL);
+    // struct tm pLocalTime;
 
-    //pLocalTime = localtime(&curTime) //mac용
-    localtime_s(&pLocalTime, &curTime); //windows용
+    pLocalTime = localtime(&curTime); //mac용
+    // localtime_s(&pLocalTime, &curTime); //windows용
     
     if (&pLocalTime == NULL)
     {
@@ -25,30 +25,30 @@ int GetCurrentTime(void)
         return -1;
     }
 
-    //return pLocalTime->tm_hour;
-    return pLocalTime.tm_hour;
+    return pLocalTime->tm_hour; //mac
+    // return pLocalTime.tm_hour; //윈도우
 }
 
 int GetCurrentDay(void)
 {
     //mac용
-    /*time_t curTime = time(NULL);
-    struct tm* pLocalTime = NULL;*/
+    time_t curTime = time(NULL);
+    struct tm* pLocalTime = NULL;
 
     //windows
-    time_t curTime = time(NULL);
-    struct tm pLocalTime;
+    // time_t curTime = time(NULL);
+    // struct tm pLocalTime;
 
-    //pLocalTime = localtime(&curTime) //mac용
-    localtime_s(&pLocalTime, &curTime); //windows용
+    pLocalTime = localtime(&curTime); //mac용
+    // localtime_s(&pLocalTime, &curTime); //windows용
 
     if (&pLocalTime == NULL)
     {
-        //time get failure then return 0
+        //time get failure then return -1
         return -1;
     }
-    // return pLocalTime->tm_wday; //mac
-    return pLocalTime.tm_wday; //윈도우
+    return pLocalTime->tm_wday; //mac
+    // return pLocalTime.tm_wday; //윈도우
 }
 
 int main()
@@ -104,7 +104,8 @@ int main()
             cout << "no day" << wDay;
             break;
     }
-
+    cout << endl;
+    
     return 0;
 }
 
