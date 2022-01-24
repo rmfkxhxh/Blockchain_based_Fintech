@@ -1,4 +1,1 @@
-﻿  CIOExample.cpp
-C:\Blockchain_based_Fintech\c++\CPP_EXAMPLE\CIOExample\CIOExample.cpp(25,13): warning C4477: 'scanf_s' : format string '%s' requires an argument of type 'unsigned int', but variadic argument 2 has type 'unsigned __int64'
-C:\Blockchain_based_Fintech\c++\CPP_EXAMPLE\CIOExample\CIOExample.cpp(25,13): message : this argument is used as a buffer size
-  CIOExample.vcxproj -> C:\Blockchain_based_Fintech\c++\CPP_EXAMPLE\x64\Debug\CIOExample_0120.exe
+﻿
