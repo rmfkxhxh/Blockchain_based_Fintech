@@ -1,3 +1,0 @@
-﻿  Variables_exam_0119.cpp
-C:\Blockchain_based_Fintech\c++\CPP_EXAMPLE\Variables_exam_0119\Variables_exam_0119.cpp(46,32): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Variables_exam_0119.vcxproj -> C:\Blockchain_based_Fintech\c++\CPP_EXAMPLE\x64\Debug\Variables_exam_0119.exe
