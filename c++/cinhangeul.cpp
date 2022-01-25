@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    string a[100];
+    string a;
 
     printf("문자열을 입력후 엔터를 누르세요!\n");
     cin >> a;
