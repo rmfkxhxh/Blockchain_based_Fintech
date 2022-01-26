@@ -55,7 +55,7 @@ int main()
     PrintBookInfoPtr(&Book2);
 
 
-    struct Books Book3 = SetBooksInfo((char*)"Welcome to C++ Hell", (char*)"Bjane stroustoup", (char*)"Hell in the C++", (int*)32159);
+    struct Books Book3 = SetBooksInfo((char*)"Welcome to C++ Hell", (char*)"Bjane stroustoup", (char*)"Hell in the C++", (int)32159);
     //(char*)"Welcome to C++ Hell" -> stack에 있는 문자열 주소를 넘겨주겟다. 
     PrintBookInfo(Book3);
     PrintBookInfoPtr(&Book3);

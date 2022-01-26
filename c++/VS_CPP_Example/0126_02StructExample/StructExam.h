@@ -39,13 +39,13 @@ namespace Booksinfo
         return;
     };
 
-    BooksTag SetBooksInfo(char* title, char* author, char* subject, int* book_id)
+    BooksTag SetBooksInfo(char* title, char* author, char* subject, int book_id)
     {
         BooksTag book;
         strcpy_s(book.title, _countof(book.title), title);
         strcpy_s(book.author, _countof(book.author), author);
         strcpy_s(book.subject, _countof(book.subject), subject);
-        book.book_id = 13423;
+        book.book_id = book_id;
 
         //strcpy_s(book->title, _countof(book->title), "Learn C++ Programming in 21 Days");
         //strcpy_s(book->author, _countof(book->author), "Sieun Lee");
