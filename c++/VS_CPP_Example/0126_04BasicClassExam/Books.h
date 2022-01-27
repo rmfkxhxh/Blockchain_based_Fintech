@@ -16,6 +16,15 @@ using namespace std;
 class CBooks
 {
 public:
+    CBooks() 
+    { 
+        cout << "Cbooks Object Constructor!~!" << endl; 
+        m_Title = "L";
+        m_Author = "dasd";
+        m_Subject = "dasda";
+        m_BookId = 654446;
+    };
+
     //Booksinfo m_BooksInfo;
     string m_Title;
     string m_Author;

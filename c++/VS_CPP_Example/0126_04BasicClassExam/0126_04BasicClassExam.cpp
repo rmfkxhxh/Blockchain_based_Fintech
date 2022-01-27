@@ -8,6 +8,7 @@
 int main()
 {
     CBooks booksObj;
+    booksObj.PrintBookInfo();
     booksObj.m_Title = "Learning C++ in 21 Days";
     booksObj.m_Author = "Sieun Lee";
     booksObj.m_Subject = "Learning C++ Programming";
@@ -27,6 +28,6 @@ int main()
     carObj.m_strCarName = "X5";
     carObj.m_strCarNo = "NY3456";
     carObj.PrintCarInfo();
-
+    cout << "Car Max Speed : " << carObj.CarSpeed(220) << endl;
     //std::cout << "Hello World!\n";
 }

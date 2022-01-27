@@ -12,5 +12,6 @@ public:
 	string m_strCarNo;
 
 	void PrintCarInfo();
+	int CarSpeed(int maxSpeed);
 };
 
