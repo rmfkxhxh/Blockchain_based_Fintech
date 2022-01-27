@@ -7,10 +7,11 @@
             "args": [
                 "/Zi",
                 "/EHsc",
+                "${fileDirname}\\**.cpp",
                 "/nologo",
                 "/Fe:",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "${file}"
+                // "${file}"
             ],
             "options": {
                 "cwd": "${fileDirname}"
