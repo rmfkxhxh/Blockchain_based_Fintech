@@ -1,11 +1,29 @@
-// ConsoleApplication1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// 0128_06PolyExam.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
+#include "Rectangle.h"
+#include "Triangle.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    CShape* shape;
+    CRectangle rect(20, 35);
+    CTriangle tri(10, 35);
+
+    // store the address of rectangle
+    shape = &rect;
+
+    // call rectangle area
+    shape->Area();
+
+    // store the address of triangle
+    shape = &tri;
+
+    //call triangle area
+    shape->Area();
+
+    //std::cout << "Hello World!\n";
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
