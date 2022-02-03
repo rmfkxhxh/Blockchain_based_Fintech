@@ -1,0 +1,5 @@
+Hello World!
+Closing a File
+When a C++ program terminates it automatically flushes all the streams, release all the allocated memory and close all the opened files.
+But it is always a good practice that a programmer should close all the opened files before program termination.
+Following is the standard syntax for close() function, which is a member of fstream, ifstream, and ofstream objects.
