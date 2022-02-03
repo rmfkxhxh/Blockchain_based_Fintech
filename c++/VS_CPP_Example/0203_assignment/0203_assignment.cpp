@@ -27,7 +27,7 @@ int main()
     {
         string directory_name("target");
 
-        std::filesystem::create_directory(path1) ? cout << "created directory - " << path1 << endl : cout << "create_directory() failed" << endl;
+        fs::create_directory(path1) ? cout << "created directory - " << path1 << endl : cout << "create_directory() failed" << endl;
     }
     char path[128];
     // 프로그램의 현재 작업 경로를 얻는다.
