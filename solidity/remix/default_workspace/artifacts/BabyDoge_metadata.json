@@ -1,0 +1,72 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "anotherCatchPhrase",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "catchPhrase",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Doge.sol": "BabyDoge"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Doge.sol": {
+			"keccak256": "0x6d982805a30f0d435882d72589b18b8fa37c6525d87633653e6bb511b09691b6",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://5aa52d229595ed9c0458571308f35c27f8692dced7dbc6d40612941194428bc0",
+				"dweb:/ipfs/QmQ9BCsW67g4TounD7nU8tuoWA8dic6ELy1qqtujxQ8cL1"
+			]
+		}
+	},
+	"version": 1
+}
