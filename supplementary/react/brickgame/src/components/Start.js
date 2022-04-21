@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BrickGame from "./BrickGame2"
+import BrickGame from "./BrickGame"
 import styled, { css } from "styled-components";
 
 const BlackScreen = styled.div`
@@ -11,44 +11,43 @@ const BlackScreen = styled.div`
     display: block;
     width: 100%;
     height: 500px;
-
-    // animation: fadeout 3s;
-    // -moz-animation: fadeout 3s; /* Firefox */
-    // -webkit-animation: fadeout 3s; /* Safari and Chrome */
-    // -o-animation: fadeout 3s; /* Opera */
-    // animation-fill-mode: forwards;
-    // @keyframes fadeout {
-    //     from {
-    //         opacity: 1;
-    //     }
-    //     to {
-    //         opacity: 0;
-    //     }
-    // }
-    // @-moz-keyframes fadeout { /* Firefox */
-    //     from {
-    //         opacity: 1;
-    //     }
-    //     to {
-    //         opacity: 0;
-    //     }
-    // }
-    // @-webkit-keyframes fadeout { /* Safari and Chrome */
-    //     from {
-    //         opacity: 1;
-    //     }
-    //     to {
-    //         opacity: 0;
-    //     }
-    // }
-    // @-o-keyframes fadeout { /* Opera */
-    //     from {
-    //         opacity: 1;
-    //     }
-    //     to {
-    //         opacity: 0;
-    //     }
-    // }
+    animation: ${(props) => props.bool ?  "none" : "fadeout 2s"};
+    -moz-animation: ${(props) => props.bool ?  "none" : "fadeout 2s"} /* Firefox */
+    -webkit-animation: ${(props) => props.bool ?  "fadeout 2s" : "none"} /* Safari and Chrome */
+    -o-animation: ${(props) => props.bool ?  "fadeout 2s" : "none"} /* Opera */
+    animation-fill-mode: forwards;
+    @keyframes fadeout {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+    @-moz-keyframes fadeout { /* Firefox */
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+    @-webkit-keyframes fadeout { /* Safari and Chrome */
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+    @-o-keyframes fadeout { /* Opera */
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
 `;
 
 
@@ -56,6 +55,7 @@ export default function Start() {
     const [inputs, setInput] = useState({});
     let [isTitle, setisTitle] = useState(false);
     let [isgameStart, setisGameStart] = useState(false);
+    let [isFadeOut, setisFadeOut] = useState(true);
     // function onClickButton() {
     //     setisGameStart(true);
     // }
@@ -73,7 +73,16 @@ export default function Start() {
     const handleClick = (e) => {
         e.preventDefault();
         // e.toggle('fade');
-        setisTitle(true);
+        function setTitle() {
+            setisTitle(true)
+        }
+        setInterval(setTitle, 1900);
+        setisFadeOut(false);
+    }
+
+    const pTagStyle = {
+        fontSize: "15px",
+        color: "white",
     }
 
     return (
@@ -92,8 +101,11 @@ export default function Start() {
                 )
 
             ) : (
-                <BlackScreen onClick={handleClick}>
+                <BlackScreen onClick={handleClick} bool={isFadeOut}>
                     Brick Game
+                    <br></br>
+                    <br></br>
+                    <p style={pTagStyle}>click to continue..</p>
                 </BlackScreen>
             )}
         </>
