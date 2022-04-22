@@ -561,8 +561,6 @@ function checkToWin() {
 }
 
 
-
-
 function isCollisionRectToRect(rectA, rectB) {
   // a의 왼쪽과 b의 오른쪽
   // a의 오른쪽과 b의 왼쪽
