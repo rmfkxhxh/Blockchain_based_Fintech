@@ -72,24 +72,24 @@ async function testAsyncAwaitFunc()
 {
     // timeoutCheckAdult(10, 8000);
     // timeoutCheckAdult(20, 5000);
-    // let a = (timeoutCheckAdult(19, 1000));
+    let a = (timeoutCheckAdult(19, 1000));
 
     // await timeoutCheckAdult(10, 8000);
     // await timeoutCheckAdult(20, 5000);
     // let b = await timeoutCheckAdult(30, 1000);
-    // console.log(`a : ${a.then(()=>console.log('then')).catch(()=>console.log('a.then called'))}`)
+    console.log(`a : ${a.then(()=>console.log('then')).catch(()=>console.log('a.catch called'))}`)
     // console.log(`b : ${b}`)
 
 
-    let promises = [];
+    // let promises = [];
 
-    promises.push(timeoutCheckAdult(10, 5000).then((a)=>a).catch((a)=>a));
-    promises.push(timeoutCheckAdult(20, 3000).then((a)=>a).catch((a)=>a));
-    promises.push(timeoutCheckAdult(30, 1000).then((a)=>a).catch((a)=>a));
+    // promises.push(timeoutCheckAdult(10, 5000).then((a)=>a).catch((a)=>a));
+    // promises.push(timeoutCheckAdult(20, 3000).then((a)=>a).catch((a)=>a));
+    // promises.push(timeoutCheckAdult(30, 1000).then((a)=>a).catch((a)=>a));
 
-    let results = await Promise.all(promises);
-    // let results = await Promise.all(promises).then(()=>true).catch(()=>false);
-    console.log(results);
+    // let results = await Promise.all(promises);
+    // // let results = await Promise.all(promises).then(()=>true).catch(()=>false);
+    // console.log(results);
 
 
     // const promiseCheckAdult = asyncCheckAdult(10);
