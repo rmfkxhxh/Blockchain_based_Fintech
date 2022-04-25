@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,25 @@
     <title>Document</title>
 
 </head>
+
 <body>
-     <!-- html내 정사각형의 myCanvas 형성 -->
-    <canvas id="myCanvas" width='510' height="510" style="background-color: lightgray;"></canvas>
+    <!-- html내 정사각형의 myCanvas 형성 -->
+    <canvas id="myCanvas" width='501' height="501" style="background-color: lightgray;"></canvas>
     <!-- 외부 스크립트 연결 -->
+    <div id="result"></div>
+    <div id="status"></div>
+    <div id="shopStatus"></div>
+    <div id="shop">
+        <button id="yes" class="btn">예</button>
+        <button id="no" class="btn">아니오</button>
+    </div>
+    <div id="rockPaperScissors" style="display:none;">
+        <button id="scissors" class="btn">가위</button>
+        <button id="rock" class="btn">바위</button>
+        <button id="paper" class="btn">보</button>
+    </div>
+    <div id="stats"></div>
     <script src="./escapeGame.js"></script>
 </body>
+
 </html>
