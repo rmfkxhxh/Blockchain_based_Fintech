@@ -11,21 +11,34 @@
 
 <body>
     <!-- html내 정사각형의 myCanvas 형성 -->
-    <canvas id="myCanvas" width='501' height="501" style="background-color: lightgray;"></canvas>
+    <div id="main" style="display: flex; ">
+        <canvas id="myCanvas" width='501' height="501" style="background-color: lightgray;"></canvas>
+        <canvas id="profileCanvas" width='501' height="501" style="background-color: lightgray;"></canvas>
+    </div>
     <!-- 외부 스크립트 연결 -->
-    <div id="result"></div>
-    <div id="status"></div>
-    <div id="shopStatus"></div>
-    <div id="shop">
-        <button id="yes" class="btn">예</button>
-        <button id="no" class="btn">아니오</button>
+    <div style="display: flex; ">
+        <div>
+            <div id="result"></div>
+            <div id="status"></div>
+            <div id="shopStatus"></div>
+            <div id="shop">
+                <button id="yes" class="btn">예</button>
+                <button id="no" class="btn">아니오</button>
+            </div>
+            <div id="rockPaperScissors" style="display:none;">
+                <button id="scissors" class="btn">가위</button>
+                <button id="rock" class="btn">바위</button>
+                <button id="paper" class="btn">보</button>
+            </div>
+            <div id="stats"></div>
+
+        </div>
+        <div style="padding: 0px 0px 0px 100px; overflow-y:scroll; height: 350px; width: 350px; text-align: center;">
+            <h1>Log</h1>
+            <div id="log"></div>
+        </div>
+
     </div>
-    <div id="rockPaperScissors" style="display:none;">
-        <button id="scissors" class="btn">가위</button>
-        <button id="rock" class="btn">바위</button>
-        <button id="paper" class="btn">보</button>
-    </div>
-    <div id="stats"></div>
     <script src="./escapeGame.js"></script>
 </body>
 

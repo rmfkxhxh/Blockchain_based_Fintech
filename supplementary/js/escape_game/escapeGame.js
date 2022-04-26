@@ -1,11 +1,14 @@
 // const 
 const canvas = document.getElementById("myCanvas"); //도형을 그릴 캔버스 제작
+const canvas2 = document.getElementById("profileCanvas"); //도형을 그릴 캔버스 제작
 const fight = document.getElementById("rockPaperScissors"); //rockPaperScissors
 const shop = document.getElementById("shop"); //shop
 const result = document.getElementById("result"); //result
 const playerStats = document.getElementById("stats"); //stats
 const currStatus = document.getElementById("status"); //status
 const shopStatus = document.getElementById("shopStatus"); // shop status
+const logDiv = document.getElementById("log"); //log
+let logCount = 0;
 const btns = [];
 btns[0] = document.getElementById("rock");
 btns[1] = document.getElementById("paper");
@@ -14,6 +17,7 @@ btns[3] = document.getElementById("yes");
 btns[4] = document.getElementById("no");
 
 const context = canvas.getContext('2d');
+const imgContext = canvas2.getContext('2d');
 
 const playerHeight = 20; // 플레이어 높이
 const playerWidth = 20; // 플레이어 넓이
@@ -37,16 +41,23 @@ const shopColor = 'yellow';
 let shopRow = Math.floor((Math.random() * (canvasTileRow - 1)));
 let shopCol = Math.floor((Math.random() * (canvasTileColumn - 1)));
 
-checkRand()
-console.log(escapeCol, escapeRow, shopCol, shopRow)
+// checkRand()
+// console.log(escapeCol, escapeRow, shopCol, shopRow)
 
 
 
 document.addEventListener('keydown', keydownEventHandler)
 document.addEventListener('keyup', keyupEventHandler)
 
+//img
+
+let img = new Image()
+let img2 = new Image()
 
 // class 
+
+
+
 class Player {
   constructor(left, top, right, bottom, color) {
     this.left = left;
@@ -74,7 +85,7 @@ class Player {
 }
 
 class MapTile {
-  constructor(left, top, right, bottom, color) {
+  constructor(left, top, right, bottom, color, level) {
     this.left = left;
     this.right = right;
     this.top = top;
@@ -85,29 +96,115 @@ class MapTile {
     this.borderColor = 'white'
     this.playerOn = false;
     this.monsterOdds = Math.random() * 100 < 10;
+    this.monsterPower = 10;
     this.escape = false;
     this.isShop = false;
+    this.level = level;
+    this.visited = false;
+    this.inSight = false;
   }
   draw() {
     context.rect(this.left, this.top, tileWidth, tileHeight)
-    if (this.playerOn) {
-      this.tileColor = 'blue';
-      // this.borderColor = 'blue';
-    } else if (this.escape == false && this.isShop == false) {
-      this.tileColor = mapTileColor;
-      context.fillStyle = this.tileColor;
-      // context.strokeStyle = this.borderColor;
-      context.fill()
-    } else if (this.isShop == true) {
-      this.tileColor = shopColor;
-      context.fillStyle = this.tileColor;
-      // context.strokeStyle = this.borderColor;
-      context.fill()
-    } else if (this.escape == true) {
-      this.tileColor = escapeColor;
-      context.fillStyle = this.tileColor;
-      // context.strokeStyle = this.borderColor;
-      context.fill()
+    if (this.inSight) {
+      if (this.level == 1 && this.playerOn != true && this.visited == false && this.escape == false) {
+        this.monsterOdds = Math.random() * 100 < 10;
+        this.monsterPower = 10 * this.level;
+        // this.tileColor = 'blue';
+        this.tileColor = 'lightgray';
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      } else if (this.level == 2 && this.playerOn != true && this.visited == false && this.escape == false) {
+        this.monsterOdds = Math.random() * 100 < 40;
+        this.monsterPower = 10 * this.level;
+        // this.tileColor = 'pink';
+        this.tileColor = 'lightgray';
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      } else if (this.level == 3 && this.playerOn != true && this.visited == false && this.escape == false) {
+        this.monsterOdds = Math.random() * 100 < 40;
+        this.monsterPower = 10 * this.level;
+        this.tileColor = 'lightgray';
+        // this.tileColor = '#8A240E';
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      } else if (this.isShop == true) {
+        this.tileColor = shopColor;
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      }
+      else if (this.escape == true) {
+        this.tileColor = escapeColor;
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      }
+    }
+    if (this.visited == true) {
+      if (this.playerOn) {
+        this.tileColor = 'white';
+        context.fillStyle = this.tileColor;
+        context.fill();
+        // this.borderColor = 'blue';
+      } else if (this.escape == false && this.isShop == false) {
+        this.tileColor = 'gray';
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      } else if (this.isShop == true) {
+        this.tileColor = shopColor;
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      } else if (this.escape == true) {
+        this.tileColor = escapeColor;
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      }
+    } else if (this.visited == false && this.inSight == false) {
+      if (this.playerOn) {
+        this.tileColor = 'lightgray';
+        context.fillStyle = this.tileColor;
+        context.fill();
+      } else if (this.escape == false && this.isShop == false) {
+        this.tileColor = 'black';
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      } else if (this.isShop == true) {
+        this.tileColor = 'black';
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      } else if (this.escape == true) {
+        this.tileColor = 'black';
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      }
+      if (this.level == 1) {
+        // this.monsterOdds = Math.random() * 100 < 30;
+        this.tileColor = 'black';
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      } else if (this.level == 2) {
+        // this.monsterOdds = Math.random() * 100 < 50;
+        this.tileColor = 'black';
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      } else if (this.level == 3) {
+        // this.monsterOdds = Math.random() * 100 < 100;
+        this.tileColor = 'black';
+        context.fillStyle = this.tileColor;
+        // context.strokeStyle = this.borderColor;
+        context.fill()
+      }
     }
   }
 }
@@ -116,6 +213,7 @@ class ClearTile extends MapTile {
     super(left, top, right, bottom);
     super.monsterOdds = false;
     super.escape = true;
+    super.level = 0;
   }
 
 }
@@ -125,6 +223,7 @@ class ShopTile extends MapTile {
     super(left, top, right, bottom);
     super.monsterOdds = false;
     super.isShop = true;
+    super.level = 0;
   }
 }
 
@@ -138,11 +237,12 @@ let player = new Player(0, 0, 0, 0, 'red')
 // functions
 
 function keydownEventHandler(e) {
-  
   checkMonster();
-  
+  // console.log(tiles)
+
 
   if (player.canMove) {
+    imgContext.clearRect(0, 0, canvas.width, canvas.height);
     if (e.key == 'ArrowRight') {
       //바를 오른쪽으로 몇 만큼 움직인다
       if (player.posX + player.moveSpeed < canvas.width) {
@@ -167,7 +267,7 @@ function keydownEventHandler(e) {
       }
 
     } else if (e.key == ' ') {
-      console.log(`player.posX : ${player.posX}, player.posX : ${player.posX}`) //, tile : ${}
+      // console.log(`player.posX : ${player.posX}, player.posX : ${player.posX}`) //, tile : ${}
       if (player.moveDirY == 0 && player.moveDirX == 0) {
         player.moveDirY = -1;
         let ranNum = Math.random() * ((Math.round(Math.random())) > 0 ? 1 : -1)
@@ -176,11 +276,8 @@ function keydownEventHandler(e) {
         } else {
           player.moveDirX -= ranNum;
         }
-
       }
-
     }
-
 
   }
   player.left = player.posX;
@@ -207,16 +304,31 @@ function isCollisionRectToRect(rectA, rectB) {
   return true;
 }
 
+function isCollisionRectToSight(rectA, rectB) {
+  // a의 왼쪽과 b의 오른쪽
+  // a의 오른쪽과 b의 왼쪽
+  // a의 아래쪽과 b의 위쪽
+  // a의 위쪽과 b의 아래쪽
+  if (rectA.left - 35 > rectB.right ||
+    rectA.right + 35 < rectB.left ||
+    rectA.bottom + 35 < rectB.top ||
+    rectA.top - 35 > rectB.bottom) {
+    return false;
+  }
+
+  return true;
+}
+
 function draw() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   drawTiles();
-  // drawClear();
-  // drawShop();
   drawPlayer();
 }
 
+
 function clickHandler(ev) {
   if (ev) {
+    logCount++;
     let rand = Math.floor(Math.random() * 3);
     let playerChoice = ev.target.innerText;
     let playerChoiceNum;
@@ -227,24 +339,32 @@ function clickHandler(ev) {
     if (rand == 0) computerChoice = '바위';
     if (rand == 1) computerChoice = '가위';
     if (rand == 2) computerChoice = '보';
-    // console.log(`playerChoice ${playerChoice}, computerChoice ${computerChoice}`)
+
     if (playerChoiceNum - rand == -1 || (playerChoiceNum - rand == 2 && rand == 0)) {
       console.log("이겼습니다");
-      player.canMove = true;
+      // let img2 = new Image()
+      img2.src = "./monsterDead.PNG"
+      img2.onload = function () {
+        imgContext.drawImage(img2, 100, 0, 150, 150);
+      };
       let award = Math.floor(Math.random() * 100);
+      logDiv.innerText += `\n${logCount}. playerChoice ${playerChoice}, computerChoice ${computerChoice}\n이겼습니다\n${award} gold 획득`
+      player.canMove = true;
       player.gold += award
-      currStatus.innerText = `승리\n승리 보상으로 ${award} gold 를 획들하였습니다  \n노랑 타일로 이동하면 game clear`;
+      currStatus.innerText += `승리\n승리 보상으로 ${award} gold 를 획득하였습니다  \n노랑 타일로 이동하면 game clear`;
       fight.style.display = "none";
       getCurrentTile().monsterOdds = false
       return true;
     } else if (rand == playerChoiceNum) {
       console.log("비겼습니다")
+      logDiv.innerText += `\n${logCount}. playerChoice ${playerChoice}, computerChoice ${computerChoice}\n비겼습니다`
       player.canMove = false;
       currStatus.innerText = "무승부\n아쉽게 비겼습니다. \n다시 용맹하게 가위 바위 보!";
       return false;
     } else if (rand - playerChoiceNum == -1 || (rand - playerChoiceNum == 2 && playerChoiceNum == 0)) {
       console.log("졌습니다")
-      player.health -= 1;
+      logDiv.innerText += `\n${logCount}. playerChoice ${playerChoice}, computerChoice ${computerChoice}\n졌습니다.`
+      player.health -= getCurrentTile().monsterPower;
       player.canMove = false;
       currStatus.innerText = "패배\n개같이 졌겼습니다. \n다시 용맹하게 가위 바위 보!"
       return false;
@@ -271,6 +391,7 @@ function clickHandler(ev) {
       shop.style.display = "none";
       return true;
     }
+
   }
 }
 
@@ -282,12 +403,19 @@ function checkMonster() {
   for (let i = 0; i < canvasTileRow; i++) {
     for (let j = 0; j < canvasTileColumn; j++) {
       if (isCollisionRectToRect(tiles[i][j], player)) {
+
         if (tiles[i][j].monsterOdds) {
-          fight.style.display = ""
+          fight.style.display = "";
+          img.src = "./monster1.PNG"
+
+          img.onload = function () {
+            imgContext.drawImage(img, 100, 0, 150, 150);
+          };
           currStatus.innerText = "몬스터 출현\n가위바위보를 이겨주세여.\n가위 바위 보!"
           player.canMove = false;
           if (clickHandler()) {
             player.canMove = true
+            console.log('win')
             // currStatus.style.display = 'none'
           };
         } else {
@@ -362,7 +490,7 @@ function checkRand() {
       // console.log(escapeRow, shopRow, escapeCol, shopCol)
       checkRand()
     } else {
-      console.log(`escapeRow : ${escapeRow}, shopRow : ${shopRow}, escapeCol : ${escapeCol}, shopCol: ${shopCol}`)
+      // console.log(`escapeRow : ${escapeRow}, shopRow : ${shopRow}, escapeCol : ${escapeCol}, shopCol: ${shopCol}`)
       return;
     }
   } else {
@@ -387,6 +515,7 @@ function setTiles() {
         (j * (tileWidth + 1)) + tileWidth, //right
         (i * (tileHeight + 1)) + tileHeight,  //bottom
         mapTileColor, //color
+        Math.floor((Math.random() * 3)) + 1, // level
       )
       if (i == escapeRow && j == escapeCol) {
         // console.log(i, j)
@@ -396,6 +525,7 @@ function setTiles() {
           (j * (tileWidth + 1)) + tileWidth, //right
           (i * (tileHeight + 1)) + tileHeight,  //bottom
           escapeColor, //color
+          console.log("escape", i, j)
         )
       }
       if (i == shopRow && j == shopCol) {
@@ -432,25 +562,61 @@ async function update() {
   checkShop();
   checkToWin();
   checkGameover();
-  // console.log(getCurrentTile())
- 
+  // console.log(tiles)
+
 
 
   for (let i = 0; i < canvasTileRow; i++) {
     for (let j = 0; j < canvasTileColumn; j++) {
       if (isCollisionRectToRect(tiles[i][j], player)) {
+        // if (i - 1 >= 0 && j - 1 >= 0) {
+        //   tiles[i - 1][j - 1].inSight = true;
+        // }
+        // if (i - 1 >= 0) {
+        //   tiles[i - 1][j].inSight = true;
+        // }
+        // if (i + 1 < canvasTileColumn > 0 && j - 1 >= 0) {
+        //   tiles[i + 1][j - 1].inSight = true;
+        // }
+        // if (i - 1 >= 0 && j + 1 < canvasTileColumn) {
+        //   tiles[i - 1][j + 1].inSight = true;
+        // }
+        // if (j + 1 < canvasTileColumn) {
+        //   tiles[i][j + 1].inSight = true;
+        // }
+        // if (j - 1 >= 0) {
+        //   tiles[i][j - 1].inSight = true;
+        // }
+        // if (i + 1 < canvasTileRow) {
+        //   tiles[i + 1][j].inSight = true;
+        // }
+        // if (i + 1 < canvasTileRow && j + 1 < canvasTileColumn) {
+        //   tiles[i + 1][j + 1].inSight = true;
+        // }
         tiles[i][j].playerOn = true;
+        tiles[i][j].visited = true;
+        // console.log( tiles[i][j].top, player.bottom)
+      } else {
+        tiles[i][j].playerOn = false;
+        // tiles[i][j].inSight = false;
+
+      }
+      if (isCollisionRectToSight(tiles[i][j], player)) {
+        // console.log("sigth")
+        tiles[i][j].inSight = true;
+      } else {
+        tiles[i][j].inSight = false;
       }
     }
   }
 
-  for (let i = 0; i < canvasTileRow; i++) {
-    for (let j = 0; j < canvasTileColumn; j++) {
-      if (!isCollisionRectToRect(tiles[i][j], player)) {
-        tiles[i][j].playerOn = false;
-      }
-    }
-  }
+  // for (let i = 0; i < canvasTileRow; i++) {
+  //   for (let j = 0; j < canvasTileColumn; j++) {
+  //     if (!isCollisionRectToRect(tiles[i][j], player)) {
+
+  //     }
+  //   }
+  // }
   playerStats.innerText = "플레이어 HP : " + player.health + "\n플레이어 Gold : " + player.gold;
 
 }
@@ -484,3 +650,4 @@ let shopTile = flatTiles.filter(tile => tile.isShop == true)[0];
 //도형을 움직이기 위해 도형의 위치값을 변경하는 함수를 작성한다. //setInterval은 몇초마다 무한반복하는 함수이다.
 setInterval(update, 10);
 setInterval(draw, 10);
+// setInterval(draw2, 10);
