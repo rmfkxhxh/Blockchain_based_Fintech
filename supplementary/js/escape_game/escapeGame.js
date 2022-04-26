@@ -109,24 +109,24 @@ class MapTile {
       if (this.level == 1 && this.playerOn != true && this.visited == false && this.escape == false) {
         this.monsterOdds = Math.random() * 100 < 10;
         this.monsterPower = 10 * this.level;
-        // this.tileColor = 'blue';
-        this.tileColor = 'lightgray';
+        this.tileColor = 'blue';
+        // this.tileColor = 'lightgray';
         context.fillStyle = this.tileColor;
         // context.strokeStyle = this.borderColor;
         context.fill()
       } else if (this.level == 2 && this.playerOn != true && this.visited == false && this.escape == false) {
         this.monsterOdds = Math.random() * 100 < 40;
         this.monsterPower = 10 * this.level;
-        // this.tileColor = 'pink';
-        this.tileColor = 'lightgray';
+        this.tileColor = 'pink';
+        // this.tileColor = 'lightgray';
         context.fillStyle = this.tileColor;
         // context.strokeStyle = this.borderColor;
         context.fill()
       } else if (this.level == 3 && this.playerOn != true && this.visited == false && this.escape == false) {
         this.monsterOdds = Math.random() * 100 < 40;
         this.monsterPower = 10 * this.level;
-        this.tileColor = 'lightgray';
-        // this.tileColor = '#8A240E';
+        // this.tileColor = 'lightgray';
+        this.tileColor = '#8A240E';
         context.fillStyle = this.tileColor;
         // context.strokeStyle = this.borderColor;
         context.fill()
@@ -345,9 +345,9 @@ function clickHandler(ev) {
       // let img2 = new Image()
       img2.src = "./monsterDead.PNG"
       img2.onload = function () {
-        imgContext.drawImage(img2, 100, 0, 150, 150);
+        imgContext.drawImage(img2, 100, 25, 150, 150);
       };
-      let award = Math.floor(Math.random() * 100);
+      let award = Math.floor(Math.random() * 100) * (getCurrentTile().level/2);
       logDiv.innerText += `\n${logCount}. playerChoice ${playerChoice}, computerChoice ${computerChoice}\n이겼습니다\n${award} gold 획득`
       player.canMove = true;
       player.gold += award
@@ -406,10 +406,12 @@ function checkMonster() {
 
         if (tiles[i][j].monsterOdds) {
           fight.style.display = "";
+          imgContext.font="20px malgun gothic"
+          imgContext.fillStyle="black"
+          imgContext.fillText(`monster level : ${tiles[i][j].level}`, 100, 20, 150)
           img.src = "./monster1.PNG"
-
           img.onload = function () {
-            imgContext.drawImage(img, 100, 0, 150, 150);
+            imgContext.drawImage(img, 100, 25, 150, 150);
           };
           currStatus.innerText = "몬스터 출현\n가위바위보를 이겨주세여.\n가위 바위 보!"
           player.canMove = false;
@@ -436,6 +438,8 @@ function checkToWin() {
     alert("게임 클리어");
   }
 }
+
+
 
 function checkShop() {
   if (isCollisionRectToRect(shopTile, player)) {
