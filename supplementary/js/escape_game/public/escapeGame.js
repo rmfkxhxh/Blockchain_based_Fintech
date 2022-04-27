@@ -9,6 +9,7 @@ const currStatus = document.getElementById("status"); //status
 const shopStatus = document.getElementById("shopStatus"); // shop status
 const logDiv = document.getElementById("log"); //log
 let logCount = 0;
+let fightWin = false;
 const btns = [];
 btns[0] = document.getElementById("rock");
 btns[1] = document.getElementById("paper");
@@ -43,11 +44,18 @@ let shopCol = Math.floor((Math.random() * (canvasTileColumn - 1)));
 
 // checkRand()
 // console.log(escapeCol, escapeRow, shopCol, shopRow)
-
+const touchEvent = ('ontouchstart' in window ? 'touchend' :
+  'click');
 
 
 document.addEventListener('keydown', keydownEventHandler)
 document.addEventListener('keyup', keyupEventHandler)
+document.addEventListener(touchEvent, touchorClickEventHandler)
+
+// document.addEventListener(, function (e) {
+//   e.preventDefault();
+//   e.target.click();
+// });
 
 //img
 
@@ -236,6 +244,128 @@ let player = new Player(15, 15, 35, 35, 'red')
 
 // functions
 
+//touch
+var posX, posY;
+
+function positionHandler(e) {
+  posX = e.clientX;
+  posY = e.clientY;
+}
+
+document.addEventListener('mousemove', positionHandler,
+  false);
+
+
+function touchorClickEventHandler(e) {
+  checkMonster();
+  // console.log(posX, posY);
+  logCount++;
+  let rand = Math.floor(Math.random() * 3);
+  let playerChoice = e.target.innerText;
+  let playerChoiceNum;
+  if (playerChoice == '바위') playerChoiceNum = 0;
+  if (playerChoice == '가위') playerChoiceNum = 1;
+  if (playerChoice == '보') playerChoiceNum = 2;
+  let computerChoice;
+  if (rand == 0) computerChoice = '바위';
+  if (rand == 1) computerChoice = '가위';
+  if (rand == 2) computerChoice = '보';
+
+  if (playerChoiceNum - rand == -1 || (playerChoiceNum - rand == 2 && rand == 0)) {
+    console.log("이겼습니다");
+    // let img2 = new Image()
+    if (getCurrentTile().level == 3) {
+      img2.src = "./monster3Dead.PNG"
+      img2.onload = function () {
+        imgContext.drawImage(img2, 100, 25, 150, 150);
+      };
+    } else {
+      img2.src = "./monsterDead.PNG"
+      img2.onload = function () {
+        imgContext.drawImage(img2, 100, 25, 150, 150);
+      };
+    }
+    let award = Math.floor(Math.random() * 100) * (getCurrentTile().level / 2);
+    logDiv.innerText += `\n${logCount}. playerChoice ${playerChoice}, computerChoice ${computerChoice}\n이겼습니다\n${award} gold 획득`
+    player.canMove = true;
+    player.gold += award
+    currStatus.innerText = `승리\n승리 보상으로 ${award} gold 를 획득하였습니다  \n노랑 타일로 이동하면 game clear`;
+    fight.style.display = "none";
+    getCurrentTile().monsterOdds = false
+    fightWin = true;
+  } else if (rand == playerChoiceNum) {
+    console.log("비겼습니다")
+    logDiv.innerText += `\n${logCount}. playerChoice ${playerChoice}, computerChoice ${computerChoice}\n비겼습니다`
+    player.canMove = false;
+    currStatus.innerText = "무승부\n아쉽게 비겼습니다. \n다시 용맹하게 가위 바위 보!";
+    fightWin = false;
+  } else if (rand - playerChoiceNum == -1 || (rand - playerChoiceNum == 2 && playerChoiceNum == 0)) {
+    console.log("졌습니다")
+    logDiv.innerText += `\n${logCount}. playerChoice ${playerChoice}, computerChoice ${computerChoice}\n졌습니다.`
+    player.health -= getCurrentTile().monsterPower;
+    player.canMove = false;
+    currStatus.innerText = "패배\n개같이 졌습니다. \n다시 용맹하게 가위 바위 보!"
+    fightWin = false;
+  } else if (playerChoice == '예' && player.gold >= 150 && player.health < 100) {
+    currStatus.style.display = "none";
+    shopStatus.innerText = "회복이 완료되었습니다 \n용맹하게 계속 진행하세여."
+    player.gold -= 150;
+    player.health = 100;
+    shop.style.display = "none";
+    fightWin = true;
+  } else if (playerChoice == '예' && player.gold < 150) {
+    currStatus.style.display = "none";
+    shopStatus.innerText = '골드가 부족합니다.';
+    shop.style.display = "none";
+    fightWin = true;
+  } else if (playerChoice == '예' && player.health == 100) {
+    currStatus.style.display = "none";
+    shopStatus.innerText = 'HP가 이미 가득 찼습니다.';
+    shop.style.display = "none";
+    fightWin = true;
+  } else if (playerChoice == '아니오') {
+    currStatus.style.display = "none";
+    shopStatus.innerText = '용맹하게 계속 진행하세여.';
+    shop.style.display = "none";
+    fightWin = true;
+  }
+
+  if (player.canMove) {
+    imgContext.clearRect(0, 0, canvas.width, canvas.height);
+    if (e) {
+      // console.log(e.target.innerText == "down");
+      if (e.target.innerText == "show") {
+        document.getElementById("arrowButtons").style.display = "";
+      } else if (e.target.innerText == "up") {
+        if (player.posY - player.moveSpeed > 0) {
+          player.posY -= player.moveSpeed;
+        }
+      } else if (e.target.innerText == "down") {
+        console.log('down')
+        if (player.posY + player.moveSpeed < canvas.height) {
+          player.posY += player.moveSpeed;
+        }
+      } else if (e.target.innerText == "left") {
+        if (player.posX - player.moveSpeed > 0) {
+          player.posX -= player.moveSpeed;
+        }
+      } else if (e.target.innerText == "right") {
+        if (player.posX + player.moveSpeed < canvas.width) {
+          player.posX += player.moveSpeed;
+        }
+      }
+    }
+  }
+  player.left = player.posX;
+  player.right = player.posX + arcRadius;
+  player.top = player.posY;
+  player.bottom = player.posY + arcRadius;
+  result.innerText = ""
+
+}
+
+
+//keydown
 function keydownEventHandler(e) {
   checkMonster();
   // console.log(tiles)
@@ -325,94 +455,20 @@ function draw() {
   drawPlayer();
 }
 
-
-function clickHandler(ev) {
-  if (ev) {
-    logCount++;
-    let rand = Math.floor(Math.random() * 3);
-    let playerChoice = ev.target.innerText;
-    let playerChoiceNum;
-    if (playerChoice == '바위') playerChoiceNum = 0;
-    if (playerChoice == '가위') playerChoiceNum = 1;
-    if (playerChoice == '보') playerChoiceNum = 2;
-    let computerChoice;
-    if (rand == 0) computerChoice = '바위';
-    if (rand == 1) computerChoice = '가위';
-    if (rand == 2) computerChoice = '보';
-
-    if (playerChoiceNum - rand == -1 || (playerChoiceNum - rand == 2 && rand == 0)) {
-      console.log("이겼습니다");
-      // let img2 = new Image()
-      if (getCurrentTile().level == 3) {
-        img2.src = "./monster3Dead.PNG"
-        img2.onload = function () {
-          imgContext.drawImage(img2, 100, 25, 150, 150);
-        };
-      } else {
-        img2.src = "./monsterDead.PNG"
-        img2.onload = function () {
-          imgContext.drawImage(img2, 100, 25, 150, 150);
-        };
-      }
-
-      let award = Math.floor(Math.random() * 100) * (getCurrentTile().level / 2);
-      logDiv.innerText += `\n${logCount}. playerChoice ${playerChoice}, computerChoice ${computerChoice}\n이겼습니다\n${award} gold 획득`
-      player.canMove = true;
-      player.gold += award
-      currStatus.innerText = `승리\n승리 보상으로 ${award} gold 를 획득하였습니다  \n노랑 타일로 이동하면 game clear`;
-      fight.style.display = "none";
-      getCurrentTile().monsterOdds = false
-      return true;
-    } else if (rand == playerChoiceNum) {
-      console.log("비겼습니다")
-      logDiv.innerText += `\n${logCount}. playerChoice ${playerChoice}, computerChoice ${computerChoice}\n비겼습니다`
-      player.canMove = false;
-      currStatus.innerText = "무승부\n아쉽게 비겼습니다. \n다시 용맹하게 가위 바위 보!";
-      return false;
-    } else if (rand - playerChoiceNum == -1 || (rand - playerChoiceNum == 2 && playerChoiceNum == 0)) {
-      console.log("졌습니다")
-      logDiv.innerText += `\n${logCount}. playerChoice ${playerChoice}, computerChoice ${computerChoice}\n졌습니다.`
-      player.health -= getCurrentTile().monsterPower;
-      player.canMove = false;
-      currStatus.innerText = "패배\n개같이 졌습니다. \n다시 용맹하게 가위 바위 보!"
-      return false;
-    } else if (playerChoice == '예' && player.gold >= 150 && player.health < 100) {
-      currStatus.style.display = "none";
-      shopStatus.innerText = "회복이 완료되었습니다 \n용맹하게 계속 진행하세여."
-      player.gold -= 150;
-      player.health = 100;
-      shop.style.display = "none";
-      return true;
-    } else if (playerChoice == '예' && player.gold < 150) {
-      currStatus.style.display = "none";
-      shopStatus.innerText = '골드가 부족합니다.';
-      shop.style.display = "none";
-      return true;
-    } else if (playerChoice == '예' && player.health == 100) {
-      currStatus.style.display = "none";
-      shopStatus.innerText = 'HP가 이미 가득 찼습니다.';
-      shop.style.display = "none";
-      return true;
-    } else if (playerChoice == '아니오') {
-      currStatus.style.display = "none";
-      shopStatus.innerText = '용맹하게 계속 진행하세여.';
-      shop.style.display = "none";
-      return true;
-    }
-
-  }
-}
-
 for (let i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", clickHandler)
+  btns[i].addEventListener("click", touchorClickEventHandler)
 }
 
+function checkFightWin() {
+  return fightWin;
+}
 function checkMonster() {
   for (let i = 0; i < canvasTileRow; i++) {
     for (let j = 0; j < canvasTileColumn; j++) {
       if (isCollisionRectToRect(tiles[i][j], player)) {
 
         if (tiles[i][j].monsterOdds) {
+          fightWin = false;
           fight.style.display = "";
           imgContext.font = "20px malgun gothic"
           imgContext.fillStyle = "black"
@@ -433,10 +489,16 @@ function checkMonster() {
               imgContext.drawImage(img, 100, 25, 150, 150);
             };
           }
+          let img3 = new Image();
+          imgContext.fillText(`player`, 168, 300, 50)
+          img3.src = "./player.png"
+          img3.onload = function () {
+            imgContext.drawImage(img3, 168, 325, 35, 35);
+          };
 
           currStatus.innerText = "몬스터 출현\n가위바위보를 이겨주세여.\n가위 바위 보!"
           player.canMove = false;
-          if (clickHandler()) {
+          if (checkFightWin()) {
             player.canMove = true
             console.log('win')
             // currStatus.style.display = 'none'
