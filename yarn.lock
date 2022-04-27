@@ -904,6 +904,11 @@
   "resolved" "https://registry.npmjs.org/@yarnpkg/lockfile/-/lockfile-1.1.0.tgz"
   "version" "1.1.0"
 
+"a-sync-waterfall@^1.0.0":
+  "integrity" "sha512-RYTOHHdWipFUliRFMCS4X2Yn2X8M87V/OpSqWzKKOGhzqyUxzyVmhHDH9sAvG+ZuQf/TAOFsLCpMw09I1ufUnA=="
+  "resolved" "https://registry.npmjs.org/a-sync-waterfall/-/a-sync-waterfall-1.0.1.tgz"
+  "version" "1.0.1"
+
 "abort-controller@^3.0.0":
   "integrity" "sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg=="
   "resolved" "https://registry.npmjs.org/abort-controller/-/abort-controller-3.0.0.tgz"
@@ -1106,6 +1111,11 @@
 
 "array-unique@^0.3.2":
   "version" "0.3.2"
+
+"asap@^2.0.3":
+  "integrity" "sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY="
+  "resolved" "https://registry.npmjs.org/asap/-/asap-2.0.6.tgz"
+  "version" "2.0.6"
 
 "asn1.js@^5.2.0":
   "version" "5.4.1"
@@ -1994,7 +2004,7 @@
     "parse5-htmlparser2-tree-adapter" "^6.0.1"
     "tslib" "^2.2.0"
 
-"chokidar@^3.4.0", "chokidar@3.5.3":
+"chokidar@^3.3.0", "chokidar@^3.4.0", "chokidar@3.5.3":
   "integrity" "sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw=="
   "resolved" "https://registry.npmjs.org/chokidar/-/chokidar-3.5.3.tgz"
   "version" "3.5.3"
@@ -2131,6 +2141,11 @@
     "array-back" "^2.0.0"
     "find-replace" "^1.0.3"
     "typical" "^2.6.1"
+
+"commander@^5.1.0":
+  "integrity" "sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg=="
+  "resolved" "https://registry.npmjs.org/commander/-/commander-5.1.0.tgz"
+  "version" "5.1.0"
 
 "commander@3.0.2":
   "integrity" "sha512-Gar0ASD4BDyKC4hl4DwHqDrmvjoxWKZigVnAbn5H1owvm4CxCPdb0HQDehwNYMJpla5+M2tPmPARzhtYuwpHow=="
@@ -5031,6 +5046,15 @@
   dependencies:
     "bn.js" "4.11.6"
     "strip-hex-prefix" "1.0.0"
+
+"nunjucks@^3.2.3":
+  "integrity" "sha512-psb6xjLj47+fE76JdZwskvwG4MYsQKXUtMsPh6U0YMvmyjRtKRFcxnlXGWglNybtNTNVmGdp94K62/+NjF5FDQ=="
+  "resolved" "https://registry.npmjs.org/nunjucks/-/nunjucks-3.2.3.tgz"
+  "version" "3.2.3"
+  dependencies:
+    "a-sync-waterfall" "^1.0.0"
+    "asap" "^2.0.3"
+    "commander" "^5.1.0"
 
 "oauth-sign@~0.9.0":
   "integrity" "sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ=="

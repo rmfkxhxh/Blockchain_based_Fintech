@@ -3,6 +3,7 @@
     "@nomiclabs/hardhat-waffle": "^2.0.3",
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
-    "ethereum-waffle": "^3.4.4"
+    "ethereum-waffle": "^3.4.4",
+    "nunjucks": "^3.2.3"
   }
 }
