@@ -14,7 +14,8 @@ const MessageType = {
 
 const initP2PServer = (p2pPort) => {
     const server = new WebSocketServer({ port: p2pPort });
-    server.on('connection', (ws) => {
+    server.on('connection', (ws, req) => {
+        console.log(req.headers.host)
         initConnection(ws);
         initMessageHandler(ws);
     });
@@ -62,7 +63,7 @@ const write = (ws, message) => {
 
 const SendMessage = (message) => { // broadcasting
     sockets.forEach((socket) => {
-        console.log(socket);
+        // console.log(socket);
         write(socket, message);
     })
 }

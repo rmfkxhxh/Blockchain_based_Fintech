@@ -216,6 +216,10 @@ class MapTile {
     }
   }
 }
+
+function setTileDetail(color, monsterPower, monsterOdds) {
+
+}
 class ClearTile extends MapTile {
   constructor(left, top, right, bottom, color) {
     super(left, top, right, bottom);
@@ -572,8 +576,8 @@ function checkRand() {
     if (escapeRow == shopRow && escapeCol == shopCol) {
       escapeRow = Math.floor((Math.random() * (canvasTileRow - 1)));
       shopRow = Math.floor((Math.random() * (canvasTileRow - 1)));
-      escapeCol = Math.floor((Math.random() * (canvasTileRow - 1)));
-      shopCol = Math.floor((Math.random() * (canvasTileRow - 1)));
+      escapeCol = Math.floor((Math.random() * (canvasTileColumn - 1)));
+      shopCol = Math.floor((Math.random() * (canvasTileColumn - 1)));
       // console.log(escapeRow, shopRow, escapeCol, shopCol)
       checkRand()
     } else {
@@ -583,8 +587,8 @@ function checkRand() {
   } else {
     escapeRow = Math.floor((Math.random() * (canvasTileRow - 1)));
     shopRow = Math.floor((Math.random() * (canvasTileRow - 1)));
-    escapeCol = Math.floor((Math.random() * (canvasTileRow - 1)));
-    shopCol = Math.floor((Math.random() * (canvasTileRow - 1)));
+    escapeCol = Math.floor((Math.random() * (canvasTileColumn - 1)));
+    shopCol = Math.floor((Math.random() * (canvasTileColumn - 1)));
     // console.log(escapeRow, shopRow, escapeCol, shopCol)
     checkRand()
   }
