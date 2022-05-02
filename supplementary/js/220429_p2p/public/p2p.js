@@ -20,6 +20,7 @@ const onClickHandler = (e) => {
         case 'enter':
             msg = document.getElementById("inputValue").value
             console.log(msg)
+            document.getElementById("senderMsg").innerText = msg //이걸 addelement로
             break
     }
 }
@@ -30,6 +31,7 @@ document.getElementById("enter").onclick = onClickHandler;
 //     // e.preventDefault();
 //     console.log('post from js')
 // })
+
 
 
 

@@ -22,10 +22,10 @@ const initHttpServer = (myHttpPort) => {
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    // app.use(bodyParser.urlencoded({ extended: true }));
+
 
     app.get('/', (req, res) => {
-        // res.send('Hello, World!');
+
         res.render('p2pclient')
     })
 
@@ -34,35 +34,23 @@ const initHttpServer = (myHttpPort) => {
     })
 
     app.post('/blocks', (req, res) => {
-        // console.log("req.body: ", req.body.data)
+
         res.send(createBlock(req.body.data));
-        // res.send('new block created with data: ' + req.body.data + '\n' + getBlocks())
+
     })
     app.post('/addPeer', (req, res) => {
-        // console.log(req.body)
+
         const { ipAddress, port } = req.body
-        // console.log(ipAddress)
-        // console.log(port)
+
         let fullAddress = "ws://" + ipAddress + ":" + port;
         console.log(fullAddress)
         connectToPeer(fullAddress);
         console.log("connectToPeer")
-        // res.send(connectToPeer(fullAddress));
-        // if (connectToPeer(req.body.newPeer)) {
-        //     res.send(connectToPeer(req.body.newPeer))
-        // } else {
-        //     res.send('failed to connect')
-        // }
+
     })
     app.get('/addPeer', (req, res) => {
-        // console.log(req.body.ipAddress)
-        // console.log(req.body.port)
         res.redirect('/')
-        // if (connectToPeer(req.body.newPeer)) {
-        //     res.send(connectToPeer(req.body.newPeer))
-        // } else {
-        //     res.send('failed to connect')
-        // }
+
     })
     app.get('/peers', (req, res) => {
         res.send(getPeers());
@@ -76,9 +64,9 @@ const initHttpServer = (myHttpPort) => {
             "type" : parseInt(req.body.type)
         }
         console.log(data)
+        
         SendMessage(data);
-        // const { msg, type } = req.body
-        // res.send(SendMessage(req.body));
+
     })
     app.listen(myHttpPort, () => {
         console.log('listening httpServer Port : ', myHttpPort);
