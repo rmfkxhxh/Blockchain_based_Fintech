@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>내용</th>
+
+            </tr>
+            {%for i in item%}
+            
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{item[loop.index-1].subject}}</td>
+                <td>{{item[loop.index-1].content}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+</body>
+</html>
