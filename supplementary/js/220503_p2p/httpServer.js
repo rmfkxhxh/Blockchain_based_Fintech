@@ -3,7 +3,7 @@ import express from 'express'; //속도나 크기면에서 require에 비해 com
 // const express = require('express'); 
 import bodyParser from 'body-parser';
 import { getBlocks, createBlock } from './block.js';
-import { connectToPeer, getPeers, SendMessage } from './p2pServer.js'
+import { connectToPeer, getPeers, broadcasting, mineBlock } from './p2pServer.js'
 import nunjucks from 'nunjucks';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -35,10 +35,14 @@ const initHttpServer = (myHttpPort) => {
     })
 
     app.post('/blocks', (req, res) => {
-
         res.send(createBlock(req.body.data));
-
     })
+
+    app.post('/mineBlock', (req, res) => {
+        res.send(mineBlock(req.body.data));
+    })
+
+
     app.post('/addPeer', (req, res) => {
 
         const { ipAddress, port } = req.body
@@ -46,8 +50,9 @@ const initHttpServer = (myHttpPort) => {
 
         let fullAddress = "ws://" + ipAddress + ":" + port;
         console.log(fullAddress)
-        connectToPeer(fullAddress);
         console.log("connectToPeer")
+        res.send(connectToPeer(fullAddress));
+        
 
     })
     app.get('/addPeer', (req, res) => {
@@ -67,7 +72,7 @@ const initHttpServer = (myHttpPort) => {
         }
         console.log(data)
 
-        SendMessage(data);
+        broadcasting(data);
 
     })
     app.listen(myHttpPort, () => {
