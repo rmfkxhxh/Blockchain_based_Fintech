@@ -1,5 +1,8 @@
 import CryptoJS from 'crypto-js';
 
+
+let blocks;
+
 class Block {
     constructor(index, data, timestamp, hash, previousHash, difficulty, nonce) {
         this.index = index;         // n번째 블록
@@ -82,6 +85,7 @@ const isValidBlockStructure = (newBlock) => {
 }
 const isValidNewBlock = (newBlock, previousBlock) => {
     if (newBlock.index !== previousBlock.index + 1) {
+        console.log(`new: ${newBlock.index}, prev +1: ${previousBlock.index + 1}`)
         console.log('invalid index');
         return false;
     } else if (newBlock.previousHash !== previousBlock.hash) {
@@ -141,6 +145,10 @@ const findNonce = (index, data, timestamp, previousHash, difficulty) => {
 }
 
 
-let blocks = [createGenesisBlock()];
+if (!blocks) {
+    blocks = [createGenesisBlock()];
+}
 
-export { getBlocks, createBlock, getLatestBlock, addBlock, isValidNewBlock, blocks}
+
+
+export { getBlocks, createBlock, getLatestBlock, addBlock, isValidNewBlock, blocks }
