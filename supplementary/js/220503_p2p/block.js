@@ -25,7 +25,7 @@ const calculateHash = (index, data, timestamp, previousHash, difficulty, nonce) 
 // 16진수 1자리 -> 2진수 4자리 256개의 0과 1로 표현 
 
 const createGenesisBlock = () => {
-    const genesisBlock = new Block(0, 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks', 0, 0, 0, 0, 0);
+    const genesisBlock = new Block(1, 'The Times 03/Jan/2009 Chancellor on brink of second bailout for banks', 0, 0, 0, 0, 0);
 
     // genesisBlock.hash = calculateHash(genesisBlock.index, genesisBlock.data, genesisBlock.timestamp, genesisBlock.previousHash, genesisBlock.difficulty, genesisBlock.nonce);
     genesisBlock.hash = calculateHash(0);

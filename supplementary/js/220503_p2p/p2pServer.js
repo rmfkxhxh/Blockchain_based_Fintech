@@ -26,7 +26,7 @@ const initP2PServer = (p2pPort) => {
     server.on('connection', (ws, req) => {
         console.log("initp2p:", req.headers.host)
         initConnection(ws);
-        write(ws, queryAllMessage());
+        // write(ws, queryAllMessage());
     });
 
     console.log('listening P2PServer Port : ', p2pPort);
@@ -36,7 +36,7 @@ const initConnection = (ws) => {
     console.log("initconnection:")
     sockets.push(ws);
     initMessageHandler(ws);
-    write(ws, queryAllMessage());
+    // write(ws, queryAllMessage());
 };
 
 const connectToPeer = (newPeer) => {
@@ -123,7 +123,8 @@ const queryLastestMessage = () => {
 const queryAllMessage = () => {
     return ({
         "type": MessageType.QUERY_ALL,
-        "data": null
+        // "data": JSON.stringify(getBlocks())
+        "data": getBlocks()
     })
 }
 
@@ -146,7 +147,7 @@ const responseAllMessage = () => {
 }
 
 const write = (ws, message) => {
-    // console.log("write() : ", message)
+    console.log("write() : ", message)
     ws.send(JSON.stringify(message));
 }
 
@@ -170,19 +171,22 @@ const replaceBlockchain = (receivedBlockchain) => {
     if (isValidBlockchain(receivedBlockchain)) {
         // let blocks = getBlocks()
         if (receivedBlockchain.length > blocks.length) {
-            console.log('받은 블록체인 길이가 길다')
+            console.log('받은 블록체인이 더 길어 동기화중')
             for (let i = 0; i < receivedBlockchain.length; i++) {
                 blocks[i] = receivedBlockchain[i]
+                console.log(`${i+1}/${receivedBlockchain.length} 완료`)
             }
+            
             // blocks = [...receivedBlockchain];
         } else if (receivedBlockchain.length == blocks.length && random.boolean()) {
-            console.log('받은 블록체인 길이가 같다')
+            console.log('받은 블록체인 길이가 같습니다.')
             for (let i = 0; i < receivedBlockchain.length; i++) {
                 blocks[i] = receivedBlockchain[i]
+                console.log(`${i+1}/${receivedBlockchain.length} 완료`)
             }
         }
     } else {
-        console.log('받은 블록체인에 문제가 있음');
+        console.log('받은 블록체인에 문제가 있습니다.');
     }
 }
 
