@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+</head>
+<body>
+    게시판
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{item.idx}}</td>
+            <td><a href="/board/view?idx={{item.idx}}">{{item.subject}}</a></td>
+            <td>{{item.name}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.hit}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/board/write">글쓰기</a>
+</body>
+</html>

@@ -5,6 +5,7 @@
     "cheerio": "^1.0.0-rc.10",
     "ethereum-waffle": "^3.4.4",
     "express": "^4.18.0",
+    "mysql2": "^2.3.3",
     "nunjucks": "^3.2.3"
   }
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View</title>
+</head>
+<body>
+    {{item.idx}}번째 게시글
+    <ul>
+        <li>
+            <label for="subject">제목</label>
+            {{item.subject}}
+        </li>
+        <li>
+            <label for="subject">작성자</label>
+            {{item.name}}
+        </li>
+        <li>
+            <label for="subject">작성일</label>
+            {{item.date}}
+        </li>
+        <li>
+            <label for="subject">조회수</label>
+            {{item.hit}}
+        </li>
+        <li>
+            <label for="subject">내용</label>
+            {{item.content}}
+        </li>
+        <li>
+            <label for="subject">좋아요</label>
+            {{item.like}}
+        </li>
+    </ul>
+    <a href="/board/list">목록</a>
+    <a href="/board/update?idx={{item.idx}}">수정</a>
+    <a href="/board/delete?idx={{item.idx}}">삭제</a>
+</body>
+</html>
