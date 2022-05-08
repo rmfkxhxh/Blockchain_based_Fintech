@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>게시판 수정 페이지</h2>
+
+    <form method="post" action="/board/update">
+        <ul>
+            <li>
+                <label for="subject">제목</label>
+                <input type="text" name="subject" id="subject" value='안녕하세요'/>
+            </li>
+            <li>
+                <label for="content">내용</label>
+                <textarea name="content" id="content">이것은 내용입니다</textarea>
+            </li>
+        </ul>
+        <input type="submit" value="수정하기">
+        <a href="/board/list">목록가기</a>
+    </form>
+</body>
+</html>

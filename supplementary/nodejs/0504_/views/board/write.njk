@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>글쓰기 페이지</h1>
+    <form method="post" action="/board/write">
+        <ul>
+            <li>
+                <label for="subject">제목</label>
+                <input type="text" name="subject" id="subject"/>
+            </li>
+            <li>
+                <label for="content">내용</label>
+                <textarea name="content" id="content"></textarea>
+            </li>
+        </ul>
+        <input type="submit" value="작성">
+        <a href="/board/list">목록가기</a>
+        <a href="/board/update">수정</a>
+        <a href="/board/delete">삭제</a>
+    </form>
+</body>
+</html>

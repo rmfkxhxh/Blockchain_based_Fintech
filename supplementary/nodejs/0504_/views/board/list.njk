@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
+            </tr>
+            {# {%for i in item%} #}
+            
+            <tr>
+                <td>1</td>
+                <td><a href="/board/view?name=ingoo">1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                {# <td>{{loop.index}}</td>
+                <td>{{item[loop.index-1].subject}}</td>
+                <td>{{item[loop.index-1].content}}</td> #}
+            </tr>
+            {# {%endfor%} #}
+        </table>
+        <a href="/board/write">글쓰기</a>
+</body>
+</html>
+
+{#
+
+GET /restapi/v1.0 HTTP/1.1
+Accept: application/json
+Authorization: Bearer 
+UExBMDFUMDRQV1MwMnzpdvtYYNWMSJ7CL8h0zM6q6a9ntw 
+name
+#}

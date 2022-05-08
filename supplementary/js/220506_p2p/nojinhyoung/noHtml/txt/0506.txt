@@ -1,0 +1,7 @@
+암호화
+
+transaction에서는 in / out이 존재
+data를 보낼때 sign이 필요 
+sign을 할때 private key를 가지고 서명
+서명하고 private key, public key를 같이 보낸다 -> private key는 노출이 안되므로 영지식증명?
+
