@@ -71,4 +71,4 @@ const getPublicKeyFromWallet = () => {
 }
 
 
-export { initWallet, getPublicKeyFromWallet };
+export { initWallet, getPublicKeyFromWallet, getPrivateKeyFromWallet };

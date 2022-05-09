@@ -12,6 +12,8 @@ router.get('/update', boardController.update);
 router.get('/delete', boardController.deleteAction); //post form 태그 생략을 위함
 router.post('/write', boardController.writeAction);
 router.post('/update', boardController.updateAction);
+router.post('/hit', boardController.hitAction);
+router.post('/like', boardController.likeAction);
 
 
 

@@ -2,8 +2,8 @@
 import express from 'express'; //속도나 크기면에서 require에 비해 compact함
 // const express = require('express'); 
 import bodyParser from 'body-parser';
-import { getBlocks, createBlock } from './block.js';
-import { connectToPeer, getPeers, broadcasting, mineBlock } from './p2pServer.js';
+import { getBlocks, createBlock, getDifficultyLog } from './block.js';
+import { connectToPeer, getPeers, broadcasting, mineBlock, autoMineBlock, endMining } from './p2pServer.js';
 import { getPublicKeyFromWallet } from './wallet.js';
 import nunjucks from 'nunjucks';
 import path from 'path';
@@ -43,6 +43,13 @@ const initHttpServer = (myHttpPort) => {
         res.send(mineBlock(req.body.data));
     })
 
+    app.post('/autoMineBlock', (req, res) => {
+        res.send(autoMineBlock(req.body.data, req.body.count));
+    })
+
+    app.get('/log', (req, res) => {
+        res.send(getDifficultyLog());
+    })
 
     app.post('/addPeer', (req, res) => {
 
@@ -53,16 +60,14 @@ const initHttpServer = (myHttpPort) => {
         console.log(fullAddress)
         console.log("connectToPeer")
         res.send(connectToPeer(fullAddress));
-
-
     })
+
     app.get('/addPeer', (req, res) => {
         res.redirect('/')
-
     })
+
     app.get('/peers', (req, res) => {
         res.send(getPeers());
-
     })
 
     app.get('/address', (req, res) => {
@@ -79,8 +84,15 @@ const initHttpServer = (myHttpPort) => {
         console.log(data)
 
         broadcasting(data);
-
     })
+
+    app.post('/sendTransaction', (req, res) => {
+        const address = req.body.address;
+        const amount = req.body.amount;
+
+        res.send(sendTransaction(address, amount));
+    })
+
     app.listen(myHttpPort, () => {
         console.log('listening httpServer Port : ', myHttpPort);
     });

@@ -145,21 +145,21 @@ const findNonce = (index, data, timestamp, previousHash, difficulty) => {
 }
 const replaceBlockchain = (receiveBlockchain) => {
     console.log("replaceBlockchain : -----------" )
-    console.log(receiveBlockchain)
-    const newBlocks = JSON.parse(receiveBlockchain);
-    console.log(newBlocks);
-    if (isValidBlockchain(newBlocks)) {
+    // console.log(receiveBlockchain)
+    // const newBlocks = JSON.parse(receiveBlockchain);
+    // console.log(receiveBlockchain);
+    if (isValidBlockchain(receiveBlockchain)) {
         //let blocks = getBlocks();
 
 
-        if (newBlocks.length > blocks.length) {
+        if (receiveBlockchain.length > blocks.length) {
             console.log('받은 블록체인 길이가 길다');
-            blocks = newBlocks;
+            blocks = receiveBlockchain;
 
         }
-        else if (newBlocks.length == blocks.length && random.boolean()) {
+        else if (receiveBlockchain.length == blocks.length && random.boolean()) {
             console.log('받은 블록체인 길이가 같다');
-            blocks = newBlocks;
+            blocks = receiveBlockchain;
         }
     }
     else {
@@ -197,6 +197,58 @@ if (!blocks) {
     blocks = [createGenesisBlock()];
 }
 
+const difficultyChangeLog = [];
+class Log {
+    constructor(idx, expect, elapsed, how, result) {
+        this.idx = idx;
+        this.expect = expect; 
+        this.elapsed = elapsed;
+        this.how = how;
+        this.result = result;           
+    }
+}
+
+const getAdjustmentDifficulty = () => {
+    // 현재 만들 블록의 시간(timestamp?), 마지막으로 난이도 조정된 시간
+    const prevAdjustedBlock = blocks[blocks.length - 1 - DIFFICULTY_ADJUSTMENT_INTERVAL];
+    const latestBlock = getLatestBlock();
+    const elapsedTime = latestBlock.timestamp - prevAdjustedBlock.timestamp;
+    const expectedTime = DIFFICULTY_ADJUSTMENT_INTERVAL * BLOCK_GENERATOIN_INTERVAL;
+    let idx = prevAdjustedBlock.index;
+
+    if(elapsedTime > (expectedTime * 2)) {
+        const newLog = new Log(idx, expectedTime, elapsedTime, "낮추기", latestBlock.difficulty - 1)
+        difficultyChangeLog.push(newLog)
+        // 난이도를 낮춘다
+        return latestBlock.difficulty - 1;
+    } else if(elapsedTime < (expectedTime / 2)) {
+        const newLog = new Log(idx,expectedTime, elapsedTime, "높이기", latestBlock.difficulty + 1)
+        difficultyChangeLog.push(newLog)
+        // 난이도를 높인다
+        return latestBlock.difficulty + 1;
+    } else {
+        const newLog = new Log(idx, expectedTime, elapsedTime, "고정", latestBlock.difficulty)
+        difficultyChangeLog.push(newLog)
+        // 예상 범주, 난이도 고정
+        return latestBlock.difficulty;
+    }
+}
+
+const getDifficulty = () => {
+    const latestBlock = getLatestBlock();
+
+    // 난이도 조절 주기 확인 
+    // 0번째, 10번째, 20번째.... (0번째 제외)
+    if (latestBlock.index % DIFFICULTY_ADJUSTMENT_INTERVAL === 0 && latestBlock.index !== 0) {
+        return getAdjustmentDifficulty();
+    }
+    
+    return latestBlock.difficulty;
+}
+
+const getDifficultyLog = () => {
+    return difficultyChangeLog;
+}
 
 
-export { getBlocks, createBlock, getLatestBlock, addBlock, isValidNewBlock, replaceBlockchain, isValidBlockchain }
+export { getBlocks, createBlock, getLatestBlock, addBlock, replaceBlockchain, getDifficultyLog }

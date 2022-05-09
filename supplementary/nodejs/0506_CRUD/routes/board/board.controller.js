@@ -3,10 +3,11 @@ const pool = require('../../sql/db.js')
 const view = async (req, res) => {
     try {
         const [result] = await pool.query(`SELECT * FROM board WHERE idx=${req.query.idx}`);
+        // const { "query": idx } = req;
         console.log(result);
         res.render(`board/view`, {
-            idx:req.query.idx,
-            item:result[0]
+            idx: req.query.idx,
+            item: result[0]
         });
     } catch (e) {
         console.error(e)
@@ -18,7 +19,7 @@ const list = async (req, res) => {
         const [result] = await pool.query('SELECT * FROM board');
         console.log(result);
         res.render('board/list', {
-            items:result
+            items: result
         });
     } catch (e) {
         console.error(e)
@@ -33,7 +34,7 @@ const update = async (req, res) => {
     try {
         const [result] = await pool.query(`SELECT * FROM board WHERE idx=${req.query.idx}`)
         res.render('board/update', {
-            item:result[0]
+            item: result[0]
         });
     } catch (e) {
         console.log(e)
@@ -71,9 +72,30 @@ const updateAction = async (req, res) => {
     }
 }
 
+const hitAction = async (req, res) => {
+    // try {
+    //     const [result] = await pool.query(`UPDATE board SET subject='${req.body.subject}', name='${req.body.name}', content='${req.body.content}' WHERE idx=${req.query.idx}`)
+    //     console.log(result)
+    //     res.redirect(`/board/view?idx=${req.query.idx}`);
+    // } catch (error) {
+    //     console.log(error)
+    // }
+}
+
+const likeAction = async (req, res) => {
+    // try {
+    //     const [result] = await pool.query(`UPDATE board SET subject='${req.body.subject}', name='${req.body.name}', content='${req.body.content}' WHERE idx=${req.query.idx}`)
+    //     console.log(result)
+    //     res.redirect(`/board/view?idx=${req.query.idx}`);
+    // } catch (error) {
+    //     console.log(error)
+    // }
+}
+
 module.exports = {
     view, list, update, write,
-    deleteAction, updateAction, writeAction
+    deleteAction, updateAction, writeAction,
+    hitAction, likeAction,
 }
 
 

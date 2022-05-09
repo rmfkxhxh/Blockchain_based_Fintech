@@ -1,0 +1,58 @@
+db -> 프로세스
+    -> db는 기본적으로 서버 (통신을 해야하니까)
+    -> express(3000)와 db ms(3306) 통신
+
+db ms  -> 매니지먼트 시스템 
+깃과 깃허브 데스크탑 느낌
+
+마리아db - mysql 만든 사람이 같아서 구조가 같다
+
+프로세스 / 스레드
+프로세스 - 하나의 프로그램 (한번에 하나만 켜지는 프로그램)
+쓰레드 - 하나의 프로세스에 여러 쓰레드
+        쓰레드끼리 데이터 공유 가능 
+        프로세스끼리는 공유 못해서 포트 열어서 통신함 (네트워크 사용)
+
+하드(비휘발성) vs 메모리(휘발성)
+
+mysql 데이터 저장 하드디스크 사용
+    데이터의 형식은? table (엑셀 느낌)
+        한줄 -> 필드(각 데이터들의 이름... idx, 유저명, id 등등)
+        database -> 엑셀 파일 하나
+        table -> sheet 하나
+
+;붙이는거 주의 
+SHOW DATABASES; // DB 목록보기
+CREATE DATABASE homepage; // 홈페이지 db 생성
+USE homepage; // db 파일 켰다
+SHOW TABLES; // 시트 목록 보기
+CREATE TABLE board (  // 시트 생성
+    idx INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        PRIMARY KEY -> 고유 키값 / 절대 있어야한다 
+            -> 중간에 하나 날리면 그 키값은 자리 없는 거 못씀
+        AUTO_INCREMENT -> 새로 DATA 들어올때마다 ++1
+    subject VARCHAR(100) NOT NULL, -> 값 입력받아야함 (null 불가) 
+    content TEXT,
+    name VARCHAR(30) NOT NULL, -> 글잣수
+    data TIMESTAMP default current_time NOT NULL, -> 디폴트 현재 시간
+    like INT(11) default 0 NOT NULL, -> bite 단위임
+    hit INT(11) default 0  NOT NULL -> 입력값 없을시 디폴트 값 0
+)CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    -> sql로 만들고 경로 복사로 cmd 에 넣어서 사용 -> sql 파일로 만들땐 `` 주기
+SOURCE + 경로;
+
+SELECT * from board
+INSERT INTO board(필드) VALUES(각 필드 값)
+UPDATE board SET subject='값' WHERE (idx=1) 원하는곳 찾아주기
+DELETE FROM board WHERE idx=1
+
+// 나머지 기능은 알아서 공부해오기 
+
+nodejs <-> db 
+정확히는 통신이 아닌 connection 
+한번 연결시 양방향 -> 계속 연결시 과부화 
+    -> 미리 연결된거 필요할때 빌려쓰고 다쓰면 돌려주기 (pool) -> 반환 필수 
+    
+connection.pool
+
+
