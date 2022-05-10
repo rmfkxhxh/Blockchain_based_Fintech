@@ -68,8 +68,8 @@ app.get('/setCookie', (req, res) => {
     // const date = new Date()
     const time = 30;
     res
-        // .setHeader('Set-Cookie', 'name=ingoo; httpOnly=true; max-age='+time+'; path=/cookie')
-        .setHeader('Set-Cookie', 'name3=ingoo; httpOnly=true; path=/')
+        .setHeader('Set-Cookie', 'name=ingoo; httpOnly=true; max-age='+time+'; path=/')
+        // .setHeader('Set-Cookie', 'name3=ingoo, httpOnly=true, path=/')
         // .setHeader('Set-Cookie', 'name=minsoo; httpOnly=true; path=/')
         .send("hello setCookie")
 

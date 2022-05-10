@@ -33,14 +33,14 @@ const getTransactionId = (transaction) => {
     // txIns에 있는 내용들을 하나의 문자열로 변환
     const txInsContent = transaction.txIns.map((txIn) => {
         // map 배열의 각 요소들을 건드릴때 사용
-        (txIn.txOutId + txIn.txOutIndex).reduce((a, b) => {     
+        (txIn.txOutId + txIn.txOutIndex).reduce((a, b) => {
             // reduce 배열의 각 요소들을 하나의 결과값으로 만들때 사용
             a + b, ''
         })
     })
     // txOuts에 있는 내용들을 하나의 문자열로 변환
     const txOutsContent = transaction.txOuts.map((txOut) => {
-        (txOut.address + txOut.amount).reduce((a, b) => {     
+        (txOut.address + txOut.amount).reduce((a, b) => {
             a + b, ''
         })
     })
@@ -78,3 +78,5 @@ const getCoinbaseTransaction = (address, blockIndex) => {
 
     return tr;
 }
+
+export { getCoinbaseTransaction }
