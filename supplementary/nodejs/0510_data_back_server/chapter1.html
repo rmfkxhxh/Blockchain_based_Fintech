@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script> <!-- react -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> <!-- reactDOM -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <!-- babel -->
+
+
+</head>
+
+<body>
+    <div class="root">
+
+    </div>
+    <script type="text/babel">
+
+        // react -> HTML 로 변환하여 body영역으로 보냄
+        // reactdom.render() 2개
+        // 1. react code
+        // 2. body영역에서 내가 html을 만들 영역
+        // documnet.querySelector()
+        // document.getelementbyId
+
+
+
+        //props
+
+        // component란? jsx를 반환하는 함수 또는 클래스
+
+
+        const ABC = (props) => {
+            console.log(props)
+            return (
+                <div>
+                    hello ABC
+                    <button onClick={props.onClick}>버튼</button>
+                    <br />
+                    {props.children}
+                </div>
+            )
+        }
+        const App = () => {
+            const [userId, setUserId] = React.useState('')
+            const [userPwd, setUserPwd] = React.useState('')
+
+
+            const root = ReactDOM.createRoot(document.querySelector('.root'));
+            root.render(
+                <div>
+                    <form>
+
+                    </form>
+                </div>
+            )
+        }
+    </script>
+    <!-- <script type="text/babel">
+
+        // react -> HTML 로 변환하여 body영역으로 보냄
+        // reactdom.render() 2개
+        // 1. react code
+        // 2. body영역에서 내가 html을 만들 영역
+        // documnet.querySelector()
+        // document.getelementbyId
+
+
+
+        //props
+
+        // component란? jsx를 반환하는 함수 또는 클래스
+
+
+        const ABC = (props) => {
+            console.log(props)
+            return (
+                <div>
+                    hello ABC
+                    <button onClick={props.onClick}>버튼</button>
+                    <br />
+                    {props.children}
+                </div>
+            )
+        }
+        const App = () => {
+            const a = () => {
+                console.log("onclick() : a")
+            }
+            console.log("app")
+            const list2 = [1, 2, 3].map(v => <div>v</div>)
+            // list2 == list
+            const list = [
+                <div>1</div>,
+                <div>2</div>,
+                <div>3</div>
+            ]
+
+            const [value, setValue] = React.useState('aaa');
+
+            //렌더링 관리
+
+            React.useEffect(() => {
+                console.log('언제찍힐까')
+                //return 은 소멸될때 (해당 component가)
+
+            }, []) // 배열이 비어있다면 componentDidMount -> 최초실행일때만
+            // 배열값이 있다면 componentDidUpdate
+            // return 값은 componentWillUnmount
+
+            const handleClick = () => {
+                setValue(2);
+            }
+
+            return (
+                <div>
+                    <ABC onClick={a}>asdasdsa</ABC>
+                    {list}
+                    {value}
+                    <button onClick={handleClick}>버튼</button>
+                </div>
+            )
+        }
+
+
+        const root = ReactDOM.createRoot(document.querySelector('.root'));
+        root.render(<App />)
+
+        console.log(<App>asdasd</App>)
+
+        console.log(<div class="aa">absss</div>)
+    
+    </script> -->
+</body>
+
+</html>

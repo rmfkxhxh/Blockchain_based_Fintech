@@ -229,19 +229,19 @@ const getAdjustmentDifficulty = () => {
 
     if (elapsedTime > (expectedTime * 2)) {
         const newLog = new Log(idx, expectedTime, elapsedTime, "낮추기", latestBlock.difficulty - 1)
-        console.log(newLog)
+        // console.log(newLog)
         difficultyChangeLog.push(newLog)
         // 난이도를 낮춘다
         return latestBlock.difficulty - 1;
     } else if (elapsedTime < (expectedTime / 2)) {
         const newLog = new Log(idx, expectedTime, elapsedTime, "높이기", latestBlock.difficulty + 1)
-        console.log(newLog)
+        // console.log(newLog)
         difficultyChangeLog.push(newLog)
         // 난이도를 높인다
         return latestBlock.difficulty + 1;
     } else {
         const newLog = new Log(idx, expectedTime, elapsedTime, "고정", latestBlock.difficulty)
-        console.log(newLog)
+        // console.log(newLog)
         difficultyChangeLog.push(newLog)
         // 예상 범주, 난이도 고정
         return latestBlock.difficulty;
