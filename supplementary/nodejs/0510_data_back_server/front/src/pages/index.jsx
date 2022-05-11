@@ -7,8 +7,9 @@ const Index = () => {
         
         // get 인자 2 (주소, 해더)
         // post 인자 3 (주소, 바디, 해더)
-        const result = await axios.get("http://127.0.0.1:3500/getCookie",{ withCredentials: true })
+        const result = await axios.post("http://127.0.0.1:3500/getCookie",{},{ withCredentials: true})
         console.log(result)
+        
         //promise
     }
 
