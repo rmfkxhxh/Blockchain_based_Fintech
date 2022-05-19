@@ -8,6 +8,7 @@ import { getPublicKeyFromWallet } from './wallet.js';
 import nunjucks from 'nunjucks';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { sendTransaction } from './transaction.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

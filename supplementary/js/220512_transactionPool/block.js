@@ -1,6 +1,6 @@
 import CryptoJS from 'crypto-js';
 import random from 'random';
-import { getCoinbaseTransaction, getTransactionPool, updateTransactionPool } from './transaction.js';
+import { getCoinbaseTransaction, getTransactionPool, updateTransactionPool, getUnspentTxOuts, processTransaction } from './transaction.js';
 import { getPublicKeyFromWallet } from './wallet.js';
 
 let blocks;
@@ -65,8 +65,12 @@ const addBlock = (newBlock, previousBlock) => {
         console.log('block added')
 
         // 사용되지 않은 txOuts 세팅
+        console.log(newBlock)
+
+        processTransaction(getCoinbaseTransaction(), getUnspentTxOuts(), newBlock.index);
+
         // 트랜잭션 풀 업데이트
-        // updateTransactionPool(unspentTxOuts);
+        updateTransactionPool(unspentTxOuts);
 
         return true;
 
@@ -167,8 +171,11 @@ const replaceBlockchain = (receiveBlockchain) => {
             console.log('blockchain updated with received blockchain');
             blocks = receiveBlockchain;
             // 사용되지 않은 txOuts 세팅
+            const latestBlock = getLatestBlock()
+            processTransaction(getTransaction, getUnspentTxOuts(), latestBlock.index);
+
             // 트랜잭션 풀 업데이트
-            // updateTransactionPool(unspentTxOuts);
+            updateTransactionPool(unspentTxOuts);
         }
 
     }
@@ -203,9 +210,6 @@ const isValidBlockchain = (receiveBlockchain) => {
 }
 
 
-if (!blocks) {
-    blocks = [createGenesisBlock()];
-}
 
 const difficultyChangeLog = [];
 
@@ -274,4 +278,26 @@ const createNextBlock = () => {
 }
 
 
-export { getBlocks, createBlock, getLatestBlock, addBlock, replaceBlockchain, getDifficultyLog }
+
+// let blocks;
+let unspentTxOuts = [];
+let transactionPool = [];
+
+//genesis block
+const genesisBlock = createGenesisBlock();
+genesisBlock.data = [getCoinbaseTransaction(getPublicKeyFromWallet(), genesisBlock.index + 1)]; // 제네시스 블록을 생성한 사람에게 50 minting함
+// addToTransactionPool(genesisBlock.data);
+transactionPool.concat(genesisBlock.data)
+
+if (!blocks) {
+    console.log('add genesisblock')
+    blocks = [genesisBlock];
+    if (blocks.length === 1) {
+        const genesisUnspentTxOuts = [];
+        // genesisUnspentTxOuts.push(createUnspentTxOut('', 1, genesisBlock.data.txOuts[0].address, genesisBlock.data.txOuts[0].amount)) // txOutId, txOutIndex, address, amount
+        unspentTxOuts = processTransaction(transactionPool, genesisUnspentTxOuts, 0)
+    };
+}
+
+export { createGenesisBlock, getBlocks, createBlock, getLatestBlock, addBlock, 
+    replaceBlockchain, getDifficultyLog, createNextBlock }

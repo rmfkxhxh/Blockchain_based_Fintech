@@ -5,7 +5,7 @@
 // import random from 'random';
 import WebSocket from 'ws';
 import { WebSocketServer } from 'ws';
-import { getBlocks, getLatestBlock, addBlock, createBlock, replaceBlockchain } from './block.js';
+import { getBlocks, getLatestBlock, addBlock, createBlock, replaceBlockchain, createNextBlock } from './block.js';
 import { getTransactionPool, sendTransaction, addToTransactionPool } from './transaction.js';
 
 const MessageType = {
@@ -199,12 +199,18 @@ const broadcasting = (message) => {
 }
 
 // 내가 새로운 블록을 채굴했을 때 연결된 노드들에게 전파
-const mineBlock = (blockData) => {
-    const newBlock = createBlock(blockData);
+const mineBlock = () => {
+    const newBlock = createNextBlock();
     if (addBlock(newBlock, getLatestBlock())) {
         broadcasting(responseAllMessage());
     }
 }
+// const mineBlock = (blockData) => {
+//     const newBlock = createNextBlock();
+//     if (addBlock(newBlock, getLatestBlock())) {
+//         broadcasting(responseAllMessage());
+//     }
+// }
 
 let autoMining;
 

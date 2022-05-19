@@ -70,5 +70,4 @@ const getPublicKeyFromWallet = () => {
     return publicKey.getPublic().encode('hex');
 }
 
-
 export { initWallet, getPublicKeyFromWallet, getPrivateKeyFromWallet };

@@ -14,11 +14,11 @@ const getTransactionPool = () => {
 
 // 얕은 복사 -> 메모리 주소값 복사
 
-let transactions;
+let transactions = [];
 let unspentTxOuts = [];
-// if (transactions) {
-//     unspentTxOuts = processTransaction([], [], 0); //  processTransaction() return하는 데이터는 UnspentTxOut[] 이다.
-// }
+if (transactions) {
+    unspentTxOuts = processTransaction(transactions, [], 0); //  processTransaction() return하는 데이터는 UnspentTxOut[] 이다.
+}
 
 const getUnspentTxOuts = () => {
     return _.cloneDeep(unspentTxOuts);
