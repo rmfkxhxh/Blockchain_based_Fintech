@@ -1,0 +1,17 @@
+{
+  "name": "redux",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "redux.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "redux": "^4.2.0",
+    "redux-actions": "^2.6.5"
+  }
+}
