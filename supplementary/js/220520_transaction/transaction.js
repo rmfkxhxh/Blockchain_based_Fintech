@@ -1,11 +1,14 @@
 import CryptoJS from 'crypto-js'
 import _ from 'lodash'              // 배열기능이 있고 깊은 복사의 유용한 기능들이 있는 라이브러리
+import ecdsa from 'elliptic'
 
 import { getUnspentTxOuts } from './block.js'
 import { getPublicKeyFromWallet, getPrivateKeyFromWallt } from './wallet.js'
 import { broadcastingTransactionPool } from './p2pServer.js'
 
+
 // let unspentTxOuts = []; // UnspentTxOut []
+const ec = new ecdsa.ec('secp256k1');
 const COINBASE_AMOUNT = 50;
 
 
@@ -52,15 +55,11 @@ class Transaction {
 // transaction id
 const getTransactionId = (transaction) => {
     // txIns 에 있는 내용들을 하나의 문자열로 만든다.
-    // const txInsContent = transaction.txIns
-    //     .map((txIn) => txIn.txOutId + txIn.txOutIndex)
-    //     .reduce((a, b) => a + b, '');
-    /* 아래가 조금 복잡
-    const txInsContent = transaction.txIns.map((txIn) => {
-        (txIn.txOutId + txIn.txOutIndex).reduce((a, b) => {
-            a + b, ''
-    })
-    */
+    const txInsContent = transaction.txIns
+        .map((txIn) => txIn.txOutId + txIn.txOutIndex)
+        .reduce((a, b) => a + b, '');
+    // console.log("txInsContent")
+    // console.log(txInsContent)
 
     // txOuts 에 있는 내용들을 하나의 문자열로 만든다.
     const txOutsContent = transaction.txOuts
@@ -68,19 +67,32 @@ const getTransactionId = (transaction) => {
         .reduce((a, b) => a + b, '');
 
     // 위 두 내용을 다 합해서 hash 처리한다.
-    return CryptoJS.SHA256(/* txInsContent */ + txOutsContent).toString()
+    return CryptoJS.SHA256(txInsContent + txOutsContent).toString()
 }
 // 이 내용이 변조되지않았다
 
 // transaction signature 
 const signTxIn = (transaction, txInIndex, privateKey) => {
-    // const txIn = transaction.txIns[txInIndex];
+    const txIn = transaction.txIns[txInIndex];
+    //todo: txIn 예외처리
+
+
+    // 서명에 필요한 key
+    const key = ec.keyFromPrivate(privateKey)
+    console.log("key: ", key);
 
     // TODO : sign 코드 검증
-    const signature = toHexString(privateKey, transaction.id).toDER();
+    const signature = toHexString(key.sign(transaction.id).toDER()); //todo .toHexString()
     return signature;
 }
 // 누가 보냈는지
+
+const toHexString = (byteArray) => {
+    // byte 값들을 문자열로 치환
+    return Array.from(byteArray, (byte) => {
+        return ('0' + (byte & 0xFF).toString(16)).slice(-2)
+    }).join('');
+}
 
 // coinbase Transaction 
 const getCoinbaseTransaction = (address, blockIndex) => {
@@ -107,6 +119,7 @@ const sendTransaction = (address, amount) => {
     const tx = createTransaction(address, amount);
     // console.log('2 : ',tx);
 
+
     // 2. 트랜잭션 풀에 추가
     transactionPool.push(tx);
 
@@ -122,13 +135,19 @@ const createTransaction = (address, amount) => {
     const { includeTxOuts, leftoverAmount } = findTxOutsForAmount(amount, getUnspentTxOuts());
     // 서명되지 않은 TxIns구성
     const unsignedTxIns = includeTxOuts.map(createUnsignedTxIn);
-    console.log('unsignedTxIns', unsignedTxIns)
+    // console.log('unsignedTxIns', unsignedTxIns)
 
     const tx = new Transaction();
-    // TxIns 서명
-    tx.txIns = unsignedTxIns;
+
+    tx.txIns = unsignedTxIns
     tx.txOuts = createTxOuts(address, amount, leftoverAmount)
     tx.id = getTransactionId(tx);
+
+    // TxIns 서명
+    tx.txIns = tx.txIns.map((txIn, index) => {
+        txIn.sign = signTxIn(tx, index, getPrivateKeyFromWallt())
+        return txIn
+    });
 
     // console.log('1 : ',tx.txOuts);
 
@@ -201,9 +220,9 @@ const createTxOuts = (address, amount, leftoverAmount) => {
 
 const addToTransactionPool = (transaction) => {
     // 올바른 트랜잭션인지
-    // if (!isValidateTransaction(transaction, unspentTxOuts)) {
-    //     throw Error('추가하려는 트랜잭션이 올바르지 않습니다. : ', transaction);
-    // }
+    if (!isValidateTransaction(transaction, getUnspentTxOuts())) {
+        throw Error('추가하려는 트랜잭션이 올바르지 않습니다. : ', transaction);
+    }
 
     // 중복되는지 
     if (!isValidateTxForPool(transaction)) {
@@ -214,22 +233,63 @@ const addToTransactionPool = (transaction) => {
 }
 
 const isValidateTransaction = (transaction, unspentTxOuts) => {
-    // 트랜잭션 아이디가 올바르게 구성되어있는지
-    if (getTransactionId(transaction) !== transaction.id) {
-        console.log('invalid transaction id : ', transaction.id);
+    //트랜잭션의 public key
+    //트랜잭션의 txOutId, txOutIndex가 같은 미사용 TxOuts를 찾는다.
+    const isValidateIns = transaction.txIns
+        .map((txIn) => isValidateTxIn(txIn, unspentTxOuts, transaction))
+        .reduce((a, b) => (a && b, true))
+
+    if (!isValidateIns) {
+        console.log('잘못된 txIn이 포함된 트랜잭션 발견')
+        return false
+    }
+
+    return true;
+
+    // // 트랜잭션 아이디가 올바르게 구성되어있는지
+    // if (getTransactionId(transaction) !== transaction.id) {
+    //     console.log('invalid transaction id : ', transaction.id);
+    //     return false;
+    // }
+
+    // const totalTxInValues = transaction.txIns
+    //     .map((txIn) => getTxInAmount(txIn, unspentTxOuts))
+    //     .reduce((a, b) => (a + b), 0); // 데이터값에 따라 스트링은 이어붙여주고 숫자int 는 합해준다. 객체지향 프로그램에선 오버로딩!! 이름은 같은데 매개변수의 타입에 따라 다른함수 기능을 하는것을 오버로딩이라고 한다. 나온값들을 합해서 하나의 값으로 짧은 에로우 펑션은 {} 생략 가능
+
+    // const totalTxOutValues = transaction.txOuts
+    //     .map((txOut) => txOut.amount)
+    //     .reduce((a, b) => (a + b), 0);
+
+    // if (totalTxInValues !== totalTxOutValues) {
+    //     console.log('totalTxInValues !== totalTxOutValues id : ', transaction.id);
+    //     return false;
+    // }
+
+    // return true;
+}
+
+const isValidateTxIn = (txIn, unspentTxOuts, transaction) => {
+    // 현재 참조중인 uTxO를 찾는다
+    const referencedUTxO = unspentTxOuts
+    .find((uTxO) => uTxO.txOutId === txIn.txOutId &&
+            uTxO.txOutIndex === txIn.txOutIndex);
+
+    if (referencedUTxO === undefined) {
+        console.log('참조 중인 uTxO를 발견하지 못함!');
         return false;
     }
 
-    const totalTxInValues = transaction.txIns
-        .map((txIn) => getTxInAmount(txIn, unspentTxOuts))
-        .reduce((a, b) => (a + b), 0); // 데이터값에 따라 스트링은 이어붙여주고 숫자int 는 합해준다. 객체지향 프로그램에선 오버로딩!! 이름은 같은데 매개변수의 타입에 따라 다른함수 기능을 하는것을 오버로딩이라고 한다. 나온값들을 합해서 하나의 값으로 짧은 에로우 펑션은 {} 생략 가능
+    const address = referencedUTxO.address
+    console.log('address')
+    console.log(address)
 
-    const totalTxOutValues = transaction.txOuts
-        .map((txOut) => txOut.amount)
-        .reduce((a, b) => (a + b), 0);
-
-    if (totalTxInValues !== totalTxOutValues) {
-        console.log('totalTxInValues !== totalTxOutValues id : ', transaction.id);
+    // 트랜잭션 sign 검증
+    const key = ec.keyFromPublic(address, 'hex');
+    console.log('key')
+    console.log(key)
+    const isValidateSign = key.verify(transaction.id, txIn.sign);
+    if (!isValidateSign) {
+        console.log('잘못된 서명이 들어간 txIn 탐지!');
         return false;
     }
 

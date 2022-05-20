@@ -108,8 +108,7 @@ const sendTransaction = (address, amount) => {
 const createTransaction = (address, amount) => {    
 
     // 미사용 TxOuts에서 사용할 내용들을 추출
-    const unspentTxOuts = getUnspentTxOuts();
-    const {includeTxOuts, leftoverAmount} = findTxOutsForAmount(amount, unspentTxOuts);
+    const {includeTxOuts, leftoverAmount} = findTxOutsForAmount(amount, getUnspentTxOuts());
     // 서명되지 않은 TxIns 구성
     const unsignedTxIns = includeTxOuts.map(createUnsignedTxIn);
     console.log('unsignedTxIns : ', unsignedTxIns);
