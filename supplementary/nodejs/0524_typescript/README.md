@@ -24,3 +24,11 @@ a.js
 b.js      webpack  -> app.js 로 합쳐줌
 
 nodejs 환경에서 돌아갑니다.
+
+
+eslint
+npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+npm install eslint-plugin-no-loops@latest --save-dev
+
+eslint && prettier
+npm install --save-dev eslint-config-prettier eslint-plugin-prettier

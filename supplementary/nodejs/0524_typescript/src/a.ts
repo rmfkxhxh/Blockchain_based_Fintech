@@ -1,6 +1,7 @@
 function f() {
     console.log("f(): evaluated");
     return function (target, propertyKey: string, descriptor: PropertyDescriptor) {
+        console.log("f(): ", target);
         console.log("f(): called");
     }
 }
@@ -8,6 +9,7 @@ function f() {
 function g() {
     console.log("g(): evaluated");
     return function (target, propertyKey: string, descriptor: PropertyDescriptor) {
+        console.log("g(): ", target);
         console.log("g(): called");
     }
 }

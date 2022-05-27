@@ -4,7 +4,10 @@
   "description": "개념이 어렵다",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .ts",
+    "lint-and-fix": "eslint . --ext .ts --fix",
+    "prettier-format": "run-script-os"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +16,9 @@
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
     "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-no-loops": "^0.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "ts-loader": "^9.3.0",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2"
