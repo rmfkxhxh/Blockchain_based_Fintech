@@ -2,7 +2,7 @@ genesis 생성해주는 곳들이 있음
 예 puppet
 
 
-geth --identity "network identity" --datadir .\ethereum\data\ --port '30303' --http --http.addr 127.0.0.1 --http.port '8001' --http.corsdomain '*' --nodiscover --netwity "network identity" --datadir .\ethereum\data\ --port '30303' --httporkid 1001 --nat 'any' --allow-insecure-unlock --http.api 'db, eth, net, web3--networkid 1001 --nat 'any' --http.api 'db, eth, net, web3, miner' con, miner' console
+geth --identity "network identity" --datadir .\ethereum\data\ --port '30303' --http --http.addr 127.0.0.1 --http.port '8001' --http.corsdomain '*' --nodiscover --allow-insecure-unlock --http.api 'db, eth, net, web3, con, miner' --networkid 1001 console
 
 geth attach ipc:\\.\pipe\geth.ipc
 eth.accounts
